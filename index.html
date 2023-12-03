@@ -1,76 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fortnite Username Submission</title>
-</head>
-<body>
+function sendToDiscord() {
+    var confirmationCheckbox = document.getElementById('confirmationCheckbox');
 
-    <label for="fortniteUsername">Fortnite Username:</label>
-    <input type="text" id="fortniteUsername" placeholder="Enter your Fortnite username" oninput="handleInputChange(event)">
-    
-    <div id="checkboxSection" style="display: none;">
-        <input type="checkbox" id="confirmationCheckbox">
-        <label for="confirmationCheckbox">I confirm my submission</label>
-        <button onclick="sendToDiscord()">Send to Discord</button>
-    </div>
+    if (confirmationCheckbox.checked) {
+        var username = document.getElementById('fortniteUsername').value;
+        var webhookURL = 'https://canary.discord.com/api/webhooks/1180921266115465246/kBAlKonXU9FnxT40LwZaP_eNqytQiu86uykkZREV-Luu7PjM1vgEZMzSdi9fbzhM6GWh';
 
-    <script>
-        function handleInputChange(event) {
-            var usernameInput = event.target.value.trim();
-            var checkboxSection = document.getElementById('checkboxSection');
+        var payload = {
+            content: 'New Fortnite Username Submission',
+            embeds: [
+                {
+                    title: 'Fortnite Username:',
+                    description: username,
+                    color: 16711680,
+                }
+            ],
+        };
 
-            if (usernameInput !== '') {
-                checkboxSection.style.display = 'block';
-            } else {
-                checkboxSection.style.display = 'none';
+        fetch(webhookURL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(payload),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
             }
-        }
-
-        function sendToDiscord() {
-            var confirmationCheckbox = document.getElementById('confirmationCheckbox');
-
-            if (confirmationCheckbox.checked) {
-                var username = document.getElementById('fortniteUsername').value;
-
-                // Replace 'YOUR_DISCORD_WEBHOOK_URL' with your actual Discord webhook URL
-                var webhookURL = 'https://canary.discord.com/api/webhooks/1180921266115465246/kBAlKonXU9FnxT40LwZaP_eNqytQiu86uykkZREV-Luu7PjM1vgEZMzSdi9fbzhM6GWh';
-
-                // Create a JSON payload for the webhook
-                var payload = {
-                    content: 'New Fortnite Username Submission',
-                    embeds: [
-                        {
-                            title: 'Fortnite Username:',
-                            description: username,
-                            color: 16711680,  // You can customize the color
-                        }
-                    ],
-                };
-
-                // Use fetch to send data to the Discord webhook
-                fetch(webhookURL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(payload),
-                })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Webhook sent successfully:', data);
-                    alert('Username submitted successfully!');
-                })
-                .catch(error => {
-                    console.error('Error sending webhook:', error);
-                    alert('Error submitting username. Please try again later.');
-                });
-            } else {
-                alert('Please confirm your submission.');
-            }
-        }
-    </script>
-
-</body>
-</html>
+            return response.json();
+        })
+        .then(data => {
+            console.log('Webhook sent successfully:', data);
+            alert('Username submitted successfully!');
+        })
+        .catch(error => {
+            console.error('Error sending webhook:', error.message);
+            alert('Error submitting username. Please try again later.');
+        });
+    } else {
+        alert('Please confirm your submission.');
+    }
+}

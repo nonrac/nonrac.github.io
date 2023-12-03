@@ -76,6 +76,12 @@
                     alert('Fortnite Username submitted successfully!');
                     // Disable Fortnite submission after successful submission
                     document.getElementById('confirmationCheckbox').disabled = true;
+
+                    // Check if Discord username is already submitted
+                    if (discordSubmitted) {
+                        // Redirect to Twitch after both submissions
+                        window.location.href = 'YOUR_TWITCH_TV_URL';
+                    }
                 })
                 .catch(error => {
                     console.error('Error sending Fortnite webhook:', error);
@@ -101,6 +107,13 @@
 
                     // Set the flag to indicate Discord submission
                     discordSubmitted = true;
+
+                    // Check if Fortnite submission is already done
+                    var fortniteCheckbox = document.getElementById('confirmationCheckbox');
+                    if (fortniteCheckbox.checked) {
+                        // Redirect to Twitch after both submissions
+                        window.location.href = 'www.twitch.tv/renderagain';
+                    }
                 } else {
                     alert('Please enter your Discord username.');
                 }

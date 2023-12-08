@@ -3,125 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fortnite and Discord Username Submission</title>
+    <title>Signup and Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 40px;
+        }
+        h1 {
+            color: #007BFF;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        input {
+            margin: 10px 0;
+            padding: 8px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-
-    <label for="fortniteUsername">Fortnite Username:</label>
-    <input type="text" id="fortniteUsername" placeholder="Enter your Fortnite username" oninput="handleInputChange(event)">
+    <h1>Welcome to My Site!</h1>
     
-    <div id="checkboxSection" style="display: none;">
-        <input type="checkbox" id="confirmationCheckbox">
-        <label for="confirmationCheckbox">I confirm my Fortnite submission</label>
-        <button onclick="sendToDiscord()">Send to Discord</button>
-    </div>
+    <!-- Signup Form -->
+    <h2>Sign Up</h2>
+    <form id="signupForm">
+        <label for="signupUsername">Username:</label>
+        <input type="text" id="signupUsername" name="signupUsername" required>
 
-    <hr>
+        <label for="signupEmail">Email:</label>
+        <input type="email" id="signupEmail" name="signupEmail" required>
 
-    <label for="discordUsername">Discord Username:</label>
-    <input type="text" id="discordUsername" placeholder="Enter your Discord username">
-    <div id="discordSection" style="display: none;">
-        <input type="checkbox" id="discordConfirmationCheckbox" disabled>
-        <label for="discordConfirmationCheckbox">Submitted</label>
-        <button onclick="submitDiscordUsername()">Submit Discord Username</button>
-    </div>
+        <button type="button" onclick="signup()">Sign Up</button>
+    </form>
+
+    <!-- Login Form -->
+    <h2>Login</h2>
+    <form id="loginForm">
+        <label for="loginUsername">Username:</label>
+        <input type="text" id="loginUsername" name="loginUsername" required>
+
+        <label for="loginEmail">Email:</label>
+        <input type="email" id="loginEmail" name="loginEmail" required>
+
+        <button type="button" onclick="login()">Login</button>
+    </form>
 
     <script>
-        // Flag to check if Discord username is submitted
-        var discordSubmitted = false;
-
-        function handleInputChange(event) {
-            var usernameInput = event.target.value.trim();
-            var checkboxSection = document.getElementById('checkboxSection');
-
-            if (usernameInput !== '') {
-                checkboxSection.style.display = 'block';
-            } else {
-                checkboxSection.style.display = 'none';
-            }
+        function signup() {
+            // You can add logic here to handle the signup process (e.g., send data to a server).
+            alert('Signup logic would go here.');
         }
 
-        function sendToDiscord() {
-            var confirmationCheckbox = document.getElementById('confirmationCheckbox');
-
-            if (confirmationCheckbox.checked) {
-                var username = document.getElementById('fortniteUsername').value;
-
-                // Replace 'YOUR_DISCORD_WEBHOOK_URL' with your actual Discord webhook URL
-                var webhookURL = 'https://canary.discord.com/api/webhooks/1180921266115465246/kBAlKonXU9FnxT40LwZaP_eNqytQiu86uykkZREV-Luu7PjM1vgEZMzSdi9fbzhM6GWh';
-
-                // Create a JSON payload for the webhook
-                var payload = {
-                    content: 'New Fortnite Username Submission',
-                    embeds: [
-                        {
-                            title: 'Fortnite Username:',
-                            description: username,
-                            color: 16711680,  // You can customize the color
-                        }
-                    ],
-                };
-
-                // Use fetch to send data to the Discord webhook
-                fetch(webhookURL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(payload),
-                })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Fortnite Webhook sent successfully:', data);
-                    alert('Fortnite Username submitted successfully!');
-                    // Disable Fortnite submission after successful submission
-                    document.getElementById('confirmationCheckbox').disabled = true;
-
-                    // Check if Discord username is already submitted
-                    if (discordSubmitted) {
-                        // Redirect to Twitch after both submissions
-                        window.location.href = 'YOUR_TWITCH_TV_URL';
-                    }
-                })
-                .catch(error => {
-                    console.error('Error sending Fortnite webhook:', error);
-                    alert('Error submitting Fortnite username. Please try again later.');
-                });
-            } else {
-                alert('Please confirm your Fortnite submission.');
-            }
-        }
-
-        function submitDiscordUsername() {
-            if (!discordSubmitted) {
-                var discordUsername = document.getElementById('discordUsername').value;
-                var discordConfirmationCheckbox = document.getElementById('discordConfirmationCheckbox');
-
-                // Check if a Discord username is entered
-                if (discordUsername.trim() !== '') {
-                    // Enable checkbox and disable input and button after submission
-                    discordConfirmationCheckbox.checked = true;
-                    discordConfirmationCheckbox.disabled = true;
-                    document.getElementById('discordUsername').disabled = true;
-                    document.getElementById('discordSection').style.display = 'block';
-
-                    // Set the flag to indicate Discord submission
-                    discordSubmitted = true;
-
-                    // Check if Fortnite submission is already done
-                    var fortniteCheckbox = document.getElementById('confirmationCheckbox');
-                    if (fortniteCheckbox.checked) {
-                        // Redirect to Twitch after both submissions
-                        window.location.href = 'www.twitch.tv/renderagain';
-                    }
-                } else {
-                    alert('Please enter your Discord username.');
-                }
-            } else {
-                alert('Discord username already submitted.');
-            }
+        function login() {
+            // You can add logic here to handle the login process (e.g., send data to a server).
+            alert('Login logic would go here.');
         }
     </script>
-
 </body>
 </html>

@@ -3,69 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signup and Login</title>
+    <title>thatguykolton's Page</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
             margin: 40px;
+            transition: background-color 0.3s, color 0.3s;
         }
         h1 {
             color: #007BFF;
+            cursor: pointer;
         }
-        form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        input {
-            margin: 10px 0;
-            padding: 8px;
-            font-size: 16px;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
+        #themeToggle {
+            position: absolute;
+            top: 10px;
+            right: 10px;
             cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to My Site!</h1>
-    
-    <!-- Signup Form -->
-    <h2>Sign Up</h2>
-    <form id="signupForm">
-        <label for="signupUsername">Username:</label>
-        <input type="text" id="signupUsername" name="signupUsername" required>
-
-        <label for="signupEmail">Email:</label>
-        <input type="email" id="signupEmail" name="signupEmail" required>
-
-        <button type="button" onclick="signup()">Sign Up</button>
-    </form>
-
-    <!-- Login Form -->
-    <h2>Login</h2>
-    <form id="loginForm">
-        <label for="loginUsername">Username:</label>
-        <input type="text" id="loginUsername" name="loginUsername" required>
-
-        <label for="loginEmail">Email:</label>
-        <input type="email" id="loginEmail" name="loginEmail" required>
-
-        <button type="button" onclick="login()">Login</button>
-    </form>
+    <h1 onclick="toggleSidebar()">thatguykolton</h1>
+    <div id="themeToggle" onclick="toggleTheme()">Toggle Theme</div>
 
     <script>
-        function signup() {
-            // You can add logic here to handle the signup process (e.g., send data to a server).
-            alert('Signup logic would go here.');
+        function toggleSidebar() {
+            alert('You clicked on "thatguykolton"!'); // Replace this with your desired action
         }
 
-        function login() {
-            // You can add logic here to handle the login process (e.g., send data to a server).
-            alert('Login logic would go here.');
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = body.classList.contains('dark-theme') ? 'dark-theme' : 'light-theme';
+            body.classList.toggle('dark-theme', currentTheme !== 'dark-theme');
+            body.classList.toggle('light-theme', currentTheme !== 'light-theme');
         }
     </script>
 </body>

@@ -14,11 +14,17 @@
         h1 {
             color: #007BFF;
             cursor: pointer;
+            font-size: 2em;
         }
         #themeToggle {
             position: absolute;
             top: 10px;
             right: 10px;
+            cursor: pointer;
+        }
+        #message {
+            font-size: 24px;
+            color: #007BFF;
             cursor: pointer;
         }
         #slider {
@@ -29,29 +35,70 @@
             cursor: pointer;
             font-size: 24px;
             color: #007BFF;
+            z-index: 1;
+        }
+        #clipsTab {
+            position: fixed;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 16px;
+            color: #fff;
+            background-color: #000;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1;
         }
     </style>
 </head>
 <body>
     <h1 onclick="goToTwitch()">thatguykolton</h1>
-    <div id="themeToggle" onclick="toggleTheme()">Toggle Theme</div>
+    <div id="themeToggle">
+        <span id="nightMode" onclick="toggleTheme('dark')">🌙</span>
+        <span id="lightMode" onclick="toggleTheme('light')">☀️</span>
+    </div>
+    <div id="slider" onclick="toggleSidebar()">^</div>
+    <div id="clipsTab" onclick="goToClipsPage()">Clips</div>
 
-    <div id="slider" onclick="scrollToTop()">^</div>
+    <div id="message" onclick="toggleMessage()">Renderagain has made this <3</div>
+
+    <div id="sidebar">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+        <!-- Add more links as needed -->
+    </div>
 
     <script>
         function goToTwitch() {
             window.location.href = 'https://www.twitch.tv/thatguykolton';
         }
 
-        function toggleTheme() {
+        function toggleTheme(theme) {
             const body = document.body;
-            const currentTheme = body.classList.contains('dark-theme') ? 'dark-theme' : 'light-theme';
-            body.classList.toggle('dark-theme', currentTheme !== 'dark-theme');
-            body.classList.toggle('light-theme', currentTheme !== 'light-theme');
+            body.classList.remove('dark-theme', 'light-theme');
+            body.classList.add(theme + '-theme');
         }
 
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const currentLeft = parseInt(window.getComputedStyle(sidebar).left);
+
+            if (currentLeft < 0) {
+                sidebar.style.left = '0';
+            } else {
+                sidebar.style.left = '-250px';
+            }
+        }
+
+        function toggleMessage() {
+            const message = document.getElementById('message');
+            message.style.display = 'none';
+        }
+
+        function goToClipsPage() {
+            window.location.href = 'clips.html'; // Create a new HTML file for the clips page
         }
     </script>
 </body>

@@ -21,15 +21,26 @@
             right: 10px;
             cursor: pointer;
         }
+        #slider {
+            position: fixed;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 24px;
+            color: #007BFF;
+        }
     </style>
 </head>
 <body>
-    <h1 onclick="toggleSidebar()">thatguykolton</h1>
+    <h1 onclick="goToTwitch()">thatguykolton</h1>
     <div id="themeToggle" onclick="toggleTheme()">Toggle Theme</div>
 
+    <div id="slider" onclick="scrollToTop()">^</div>
+
     <script>
-        function toggleSidebar() {
-            alert('You clicked on "thatguykolton"!'); // Replace this with your desired action
+        function goToTwitch() {
+            window.location.href = 'https://www.twitch.tv/thatguykolton';
         }
 
         function toggleTheme() {
@@ -37,6 +48,10 @@
             const currentTheme = body.classList.contains('dark-theme') ? 'dark-theme' : 'light-theme';
             body.classList.toggle('dark-theme', currentTheme !== 'dark-theme');
             body.classList.toggle('light-theme', currentTheme !== 'light-theme');
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
 </body>

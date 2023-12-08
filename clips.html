@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clips Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 40px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        h1 {
+            color: #007BFF;
+        }
+        #themeToggle {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Clips Page</h1>
+
+    <!-- Add clip upload functionality here -->
+    <form id="clipUploadForm">
+        <label for="clipLink">Twitch Clip Link:</label>
+        <input type="text" id="clipLink" name="clipLink" placeholder="Enter Twitch Clip URL">
+        <button type="button" onclick="submitClip()">Upload Clip</button>
+    </form>
+
+    <div id="themeToggle" onclick="toggleTheme()">Toggle Theme</div>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = body.classList.contains('dark-theme') ? 'dark-theme' : 'light-theme';
+            body.classList.toggle('dark-theme', currentTheme !== 'dark-theme');
+            body.classList.toggle('light-theme', currentTheme !== 'light-theme');
+        }
+
+        function submitClip() {
+            const clipLink = document.getElementById('clipLink').value;
+
+            // Perform actions with the submitted clip link
+            alert(`Clip submitted: ${clipLink}`);
+        }
+    </script>
+</body>
+</html>

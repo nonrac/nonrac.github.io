@@ -45,6 +45,10 @@
         #sidebar {
             display: none;
         }
+        #twitchEmbed {
+            width: 100%;
+            height: 500px; /* Adjust the height as needed */
+        }
     </style>
 </head>
 <body>
@@ -63,6 +67,15 @@
         <a href="#">Contact</a>
         <!-- Add more links as needed -->
     </div>
+
+    <!-- Twitch Embed iframe -->
+    <iframe
+        id="twitchEmbed"
+        src="https://player.twitch.tv/?channel=thatguykolton&parent=localhost"
+        frameborder="0"
+        scrolling="no"
+        allowfullscreen="true">
+    </iframe>
 
     <script>
         function goToTwitch() {

@@ -10,6 +10,8 @@
             text-align: center;
             margin: 40px;
             transition: background-color 0.3s, color 0.3s;
+            background-image: url('URL_TO_YOUR_BACKGROUND_IMAGE.jpg');
+            background-size: cover;
         }
         h1 {
             color: #007BFF;
@@ -21,11 +23,13 @@
             top: 10px;
             right: 10px;
             cursor: pointer;
+            color: #fff;
         }
         #message {
             font-size: 24px;
             color: #007BFF;
             cursor: pointer;
+            color: #fff;
         }
         #slider {
             position: fixed;
@@ -36,6 +40,7 @@
             font-size: 24px;
             color: #007BFF;
             z-index: 1;
+            color: #fff;
         }
         #aboutLink {
             cursor: pointer;
@@ -48,7 +53,7 @@
     </style>
 </head>
 <body>
-    <h1 onclick="goToTwitch()">thatguykolton</h1>
+    <h1 onclick="playMusic()">thatguykolton</h1>
     <div id="themeToggle">
         <span id="nightMode" onclick="toggleTheme('dark')">🌙</span>
         <span id="lightMode" onclick="toggleTheme('light')">☀️</span>
@@ -65,8 +70,10 @@
     </div>
 
     <script>
-        function goToTwitch() {
-            window.location.href = 'https://www.twitch.tv/thatguykolton';
+        function playMusic() {
+            // Play music when "thatguykolton" is clicked
+            const audio = new Audio('y2mate.is - kankan___wokeup-9N2LzFrsew4-192k-1702087105.mp3.crdownload');
+            audio.play();
         }
 
         function toggleTheme(theme) {

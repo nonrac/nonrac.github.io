@@ -45,14 +45,15 @@
         #sidebar {
             display: none;
         }
-        #twitchEmbed {
-            width: 100%;
-            height: 500px; /* Adjust the height as needed */
+        #clipOfTheDay {
+            font-size: 18px;
+            color: #007BFF;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <h1 onclick="openStreamlabs()">thatguykolton</h1>
+    <h1 onclick="openClipOfTheDay()">thatguykolton</h1>
     <div id="themeToggle">
         <span id="nightMode" onclick="toggleTheme('dark')">🌙</span>
         <span id="lightMode" onclick="toggleTheme('light')">☀️</span>
@@ -68,20 +69,27 @@
         <!-- Add more links as needed -->
     </div>
 
-    <!-- Twitch Embed iframe -->
-    <iframe
-        id="twitchEmbed"
-        src="https://player.twitch.tv/?channel=thatguykolton&parent=localhost"
-        frameborder="0"
-        scrolling="no"
-        allowfullscreen="true">
-    </iframe>
+    <div id="clipOfTheDay"></div>
 
     <script>
-        function openStreamlabs() {
-            setTimeout(function() {
-                window.open('https://streamlabs.com/iliketoplayjtoh/tip', '_blank');
-            }, 5000); // Wait for 5 seconds before opening the link
+        function openClipOfTheDay() {
+            // Replace 'CLIP_ID' with the actual ID of your Twitch clip
+            const clipId = 'PreciousFilthyGarlicPogChamp-AMPd-gRQxztjGFdj';
+            const clipEmbedUrl = `https://clips.twitch.tv/embed?clip=${clipId}&parent=localhost`;
+
+            // Create an iframe for the Twitch clip
+            const clipIframe = document.createElement('iframe');
+            clipIframe.src = clipEmbedUrl;
+            clipIframe.width = '100%';
+            clipIframe.height = '500px';
+            clipIframe.frameBorder = '0';
+            clipIframe.scrolling = 'no';
+            clipIframe.allowfullscreen = 'true';
+
+            // Add the iframe to the 'clipOfTheDay' div
+            const clipOfTheDayDiv = document.getElementById('clipOfTheDay');
+            clipOfTheDayDiv.innerHTML = '<p>Clip Of the Day LOL</p>';
+            clipOfTheDayDiv.appendChild(clipIframe);
         }
 
         function toggleTheme(theme) {

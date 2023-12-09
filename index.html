@@ -11,10 +11,6 @@
             margin: 40px;
             transition: background-color 0.3s, color 0.3s;
         }
-        body.dark-theme {
-            background-color: #121212;
-            color: #fff;
-        }
         h1 {
             color: #007BFF;
             cursor: pointer;
@@ -25,16 +21,6 @@
             top: 10px;
             right: 10px;
             cursor: pointer;
-        }
-        #themeToggle span {
-            display: inline-block;
-            font-size: 24px;
-            color: #007BFF;
-            cursor: pointer;
-            z-index: 1;
-        }
-        #themeToggle span.hide {
-            display: none;
         }
         #message {
             font-size: 24px;
@@ -85,7 +71,7 @@
     <h1 onclick="openClipOfTheDay()">thatguykolton</h1>
     <div id="themeToggle">
         <span id="nightMode" onclick="toggleTheme('dark')">🌙</span>
-        <span id="lightMode" onclick="toggleTheme('light')" class="hide">☀️</span>
+        <span id="lightMode" onclick="toggleTheme('light')">☀️</span>
     </div>
     <div id="slider" onclick="toggleSidebar()">^</div>
 
@@ -124,18 +110,6 @@
             const body = document.body;
             body.classList.remove('dark-theme', 'light-theme');
             body.classList.add(theme + '-theme');
-            
-            // Toggle visibility of theme buttons
-            const nightModeButton = document.getElementById('nightMode');
-            const lightModeButton = document.getElementById('lightMode');
-            
-            if (theme === 'dark') {
-                nightModeButton.classList.add('hide');
-                lightModeButton.classList.remove('hide');
-            } else {
-                nightModeButton.classList.remove('hide');
-                lightModeButton.classList.add('hide');
-            }
         }
 
         function toggleSidebar() {
@@ -159,4 +133,18 @@
         }
 
         function openInviteBot() {
-            window.open('https://discord.com/api/oauth2/authorize?client_id=1183056996715470888&permissions=8&scope=bot',
+            window.open('https://discord.com/api/oauth2/authorize?client_id=1183056996715470888&permissions=8&scope=bot', '_blank');
+        }
+
+        function openCommands() {
+            // Add logic to display the bot commands/help
+            alert("Kolton's Bot Commands:\n1. SOON...\n2. SOON...\n3. SOON....");
+        }
+
+        // Navigate to a different page when "About" is clicked
+        document.getElementById('aboutLink').addEventListener('click', function() {
+            window.location.href = 'about.html'; // Create a new HTML file for the about page
+        });
+    </script>
+</body>
+</html>

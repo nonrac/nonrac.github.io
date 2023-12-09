@@ -7,7 +7,7 @@
 <script>
   // Your web app's Firebase configuration
   const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
+    apiKey: "AIzaSyCdMyd6eEhAH2y05D-14JkmTYH-TXLJOMo",
     authDomain: "big-pact-384923.firebaseapp.com",
     projectId: "big-pact-384923",
     storageBucket: "big-pact-384923.appspot.com",
@@ -42,6 +42,9 @@
             right: 10px;
             cursor: pointer;
         }
+        .tab {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -55,6 +58,17 @@
     </form>
 
     <div id="themeToggle" onclick="toggleTheme()">Toggle Theme</div>
+
+    <div class="tab" id="uploadTab">
+        <!-- Your existing upload tab content -->
+    </div>
+
+    <div class="tab" id="twitchClipsTab">
+        <h2>Twitch Clips</h2>
+        <div id="twitchClipsContainer">
+            <!-- Twitch Clips will be displayed here as media players -->
+        </div>
+    </div>
 
     <script>
         function toggleTheme() {
@@ -86,6 +100,37 @@
                 console.error('Error adding clip: ', error);
             });
         }
+
+        // Function to load Twitch Clips from Firebase and display as media players
+        function loadTwitchClips() {
+            // Retrieve Twitch Clips from Firebase
+            db.collection('clips')
+                .where('link', '>=', 'https://clips.twitch.tv/')
+                .orderBy('link')
+                .limit(4) // Limit to 4 clips per page
+                .get()
+                .then((querySnapshot) => {
+                    const twitchClipsContainer = document.getElementById('twitchClipsContainer');
+                    twitchClipsContainer.innerHTML = '';
+
+                    querySnapshot.forEach((doc) => {
+                        const clipLink = doc.data().link;
+                        const videoPlayer = document.createElement('iframe');
+                        videoPlayer.src = clipLink;
+                        videoPlayer.width = 560;
+                        videoPlayer.height = 315;
+                        twitchClipsContainer.appendChild(videoPlayer);
+                    });
+                })
+                .catch((error) => {
+                    console.error('Error loading Twitch Clips: ', error);
+                });
+        }
+
+        // Load Twitch Clips when the page loads
+        window.onload = function() {
+            loadTwitchClips();
+        };
     </script>
 </body>
 </html>

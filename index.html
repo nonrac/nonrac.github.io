@@ -52,7 +52,7 @@
     </style>
 </head>
 <body>
-    <h1 onclick="goToTwitch()">thatguykolton</h1>
+    <h1 onclick="openStreamlabs()">thatguykolton</h1>
     <div id="themeToggle">
         <span id="nightMode" onclick="toggleTheme('dark')">🌙</span>
         <span id="lightMode" onclick="toggleTheme('light')">☀️</span>
@@ -78,8 +78,10 @@
     </iframe>
 
     <script>
-        function goToTwitch() {
-            window.location.href = 'https://www.twitch.tv/thatguykolton';
+        function openStreamlabs() {
+            setTimeout(function() {
+                window.open('https://streamlabs.com/iliketoplayjtoh/tip', '_blank');
+            }, 5000); // Wait for 5 seconds before opening the link
         }
 
         function toggleTheme(theme) {

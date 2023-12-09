@@ -21,13 +21,11 @@
             top: 10px;
             right: 10px;
             cursor: pointer;
-            color: #fff;
         }
         #message {
             font-size: 24px;
             color: #007BFF;
             cursor: pointer;
-            color: #fff;
         }
         #slider {
             position: fixed;
@@ -38,7 +36,6 @@
             font-size: 24px;
             color: #007BFF;
             z-index: 1;
-            color: #fff;
         }
         #aboutLink {
             cursor: pointer;
@@ -51,7 +48,7 @@
     </style>
 </head>
 <body>
-    <h1 onclick="playMusic()">thatguykolton</h1>
+    <h1 onclick="goToTwitch()">thatguykolton</h1>
     <div id="themeToggle">
         <span id="nightMode" onclick="toggleTheme('dark')">🌙</span>
         <span id="lightMode" onclick="toggleTheme('light')">☀️</span>
@@ -68,6 +65,10 @@
     </div>
 
     <script>
+        function goToTwitch() {
+            window.location.href = 'https://www.twitch.tv/thatguykolton';
+        }
+
         function toggleTheme(theme) {
             const body = document.body;
             body.classList.remove('dark-theme', 'light-theme');

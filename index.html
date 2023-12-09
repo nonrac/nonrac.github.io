@@ -9,9 +9,6 @@
             font-family: Arial, sans-serif;
             text-align: center;
             margin: 40px;
-            transition: background-color 0.3s, color 0.3s;
-            background-image: url('Car-GIF'); /* Replace 'Car-GIF' with the actual URL of your background image */
-            background-size: cover;
         }
         h1 {
             color: #007BFF;
@@ -54,7 +51,6 @@
     </style>
 </head>
 <body>
-    <h1 onclick="playMusic()">thatguykolton</h1>
     <div id="themeToggle">
         <span id="nightMode" onclick="toggleTheme('dark')">🌙</span>
         <span id="lightMode" onclick="toggleTheme('light')">☀️</span>
@@ -71,12 +67,6 @@
     </div>
 
     <script>
-        function playMusic() {
-            // Play music when "thatguykolton" is clicked
-            const audio = new Audio('y2mate.is - kankan___wokeup-9N2LzFrsew4-192k-1702087105.mp3.crdownload');
-            audio.play();
-        }
-
         function toggleTheme(theme) {
             const body = document.body;
             body.classList.remove('dark-theme', 'light-theme');

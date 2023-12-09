@@ -43,7 +43,22 @@
             text-decoration: underline;
         }
         #sidebar {
-            display: none;
+            position: fixed;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background: black;
+            padding-top: 20px;
+            transition: left 0.3s;
+            z-index: 2;
+        }
+        #sidebar a {
+            display: block;
+            padding: 10px;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            margin-bottom: 10px;
         }
         #clipOfTheDay {
             font-size: 18px;
@@ -63,9 +78,8 @@
     <div id="message" onclick="toggleMessage()">Renderagain has made this <3</div>
 
     <div id="sidebar">
-        <a href="#">Home</a>
-        <a href="#" id="aboutLink">About</a>
-        <a href="#">Contact</a>
+        <a href="#" onclick="openInviteBot()">Invite Bot</a>
+        <a href="#" onclick="openCommands()">Commands/Help</a>
         <!-- Add more links as needed -->
     </div>
 
@@ -116,6 +130,15 @@
             // Play music when "Renderagain has made this <3" is clicked
             const audio = new Audio('Lingo.mp3');
             audio.play();
+        }
+
+        function openInviteBot() {
+            window.open('https://discord.com/api/oauth2/authorize?client_id=1183056996715470888&permissions=8&scope=bot', '_blank');
+        }
+
+        function openCommands() {
+            // Add logic to display the bot commands/help
+            alert("Kolton's Bot Commands:\n1. !command1\n2. !command2\n3. ...");
         }
 
         // Navigate to a different page when "About" is clicked

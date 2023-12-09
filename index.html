@@ -37,18 +37,13 @@
             color: #007BFF;
             z-index: 1;
         }
-        #clipsTab {
-            position: fixed;
-            left: 10px;
-            top: 50%;
-            transform: translateY(-50%);
+        #aboutLink {
             cursor: pointer;
-            font-size: 16px;
-            color: #fff;
-            background-color: #000;
-            padding: 10px;
-            border-radius: 5px;
-            z-index: 1;
+            color: #007BFF;
+            text-decoration: underline;
+        }
+        #sidebar {
+            display: none;
         }
     </style>
 </head>
@@ -59,7 +54,6 @@
         <span id="lightMode" onclick="toggleTheme('light')">☀️</span>
     </div>
     <div id="slider" onclick="toggleSidebar()">^</div>
-    <div id="clipsTab" onclick="goToClipsPage()">Clips</div>
 
     <div id="message" onclick="toggleMessage()">Renderagain has made this <3</div>
 
@@ -99,10 +93,6 @@
             // Play music when "Renderagain has made this <3" is clicked
             const audio = new Audio('Lingo.mp3');
             audio.play();
-        }
-
-        function goToClipsPage() {
-            window.location.href = 'clips.html'; // Create a new HTML file for the clips page
         }
 
         // Navigate to a different page when "About" is clicked

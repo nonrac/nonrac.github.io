@@ -55,6 +55,17 @@
 <body>
     <h1>Clips Page</h1>
 
+    <!-- Registration Form -->
+    <form id="registrationForm">
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" required>
+
+        <button type="button" onclick="registerUser()">Register</button>
+    </form>
+
     <!-- Add clip upload functionality here -->
     <form id="clipUploadForm">
         <label for="clipLink">Twitch Clip Link:</label>
@@ -77,6 +88,35 @@
 
             // Perform actions with the submitted clip link
             alert(`Clip submitted: ${clipLink}`);
+        }
+
+        // Registration Script
+        function registerUser() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            firebase.auth().createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    // User registered successfully
+                    const user = userCredential.user;
+                    console.log('User registered:', user);
+
+                    // Optionally: Send email verification
+                    user.sendEmailVerification().then(() => {
+                        console.log('Email verification sent.');
+                    }).catch((error) => {
+                        console.error('Email verification error:', error);
+                    });
+
+                    // Redirect to the user's dashboard or perform other actions
+                })
+                .catch((error) => {
+                    // Handle registration errors
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.error('Registration error:', errorCode, errorMessage);
+                    // Display an error message to the user
+                });
         }
     </script>
 </body>

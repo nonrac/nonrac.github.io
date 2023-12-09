@@ -65,7 +65,7 @@
 
     <div id="sidebar">
         <a href="#">Home</a>
-        <a href="#">About</a>
+        <a href="#" id="aboutLink">About</a>
         <a href="#">Contact</a>
         <!-- Add more links as needed -->
     </div>
@@ -95,11 +95,20 @@
         function toggleMessage() {
             const message = document.getElementById('message');
             message.style.display = 'none';
+
+            // Play music when "Renderagain has made this <3" is clicked
+            const audio = new Audio('Lingo.mp3');
+            audio.play();
         }
 
         function goToClipsPage() {
             window.location.href = 'clips.html'; // Create a new HTML file for the clips page
         }
+
+        // Navigate to a different page when "About" is clicked
+        document.getElementById('aboutLink').addEventListener('click', function() {
+            window.location.href = 'about.html'; // Create a new HTML file for the about page
+        });
     </script>
 </body>
 </html>

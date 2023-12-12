@@ -10,6 +10,8 @@
             text-align: center;
             margin: 40px;
             transition: background-color 0.3s, color 0.3s;
+            background-color: #111; /* Set default background color to dark */
+            color: white; /* Set default text color to white */
         }
         #themeToggle {
             position: absolute;
@@ -21,6 +23,7 @@
             font-size: 24px;
             color: #007BFF;
             cursor: pointer;
+            transition: transform 0.3s ease; /* Add sliding animation */
         }
         #slider {
             position: fixed;
@@ -28,9 +31,10 @@
             top: 50%;
             transform: translateY(-50%);
             cursor: pointer;
-            font-size: 24px;
+            font-size: 36px; /* Increase the size of the slider */
             color: #007BFF;
             z-index: 1;
+            transition: font-size 0.3s ease; /* Add font size transition */
         }
         #aboutLink {
             cursor: pointer;
@@ -59,6 +63,15 @@
             font-size: 18px;
             color: #007BFF;
             margin-top: 20px;
+        }
+        /* Add dark and light themes */
+        body.dark-theme {
+            background-color: #111;
+            color: white;
+        }
+        body.light-theme {
+            background-color: #fff;
+            color: #333;
         }
     </style>
 </head>
@@ -104,6 +117,9 @@
             // Play music when "Renderagain has made this <3" is clicked
             const audio = new Audio('Lingo.mp3');
             audio.play();
+
+            // Add sliding animation for the message
+            message.style.transform = 'translateY(-100%)';
         }
 
         function openInviteBot() {

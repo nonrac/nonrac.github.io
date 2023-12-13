@@ -24,18 +24,72 @@
             color: white;
             font-size: 18px;
         }
+        #game-menu {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #333;
+            padding: 20px;
+            color: white;
+            text-align: center;
+        }
+        #settings-menu {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #333;
+            padding: 20px;
+            color: white;
+            text-align: center;
+        }
+        #username-input {
+            margin-bottom: 10px;
+        }
+        .menu-button {
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #007BFF; /* Blue */
+            color: white;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .menu-button:hover {
+            background-color: #0056b3; /* Darker Blue on hover */
+        }
     </style>
 </head>
 <body>
 
 <div id="game-code"></div>
-
 <canvas id="gameCanvas" width="800" height="400"></canvas>
+
+<div id="game-menu">
+    <div id="username-input">
+        <label for="username">Enter your username:</label>
+        <input type="text" id="username" placeholder="Username">
+    </div>
+    <button class="menu-button" onclick="startGame()">Start Game</button>
+    <button class="menu-button" onclick="openSettingsMenu()">Settings</button>
+</div>
+
+<div id="settings-menu">
+    <button class="menu-button" onclick="closeSettingsMenu()">Close Settings</button>
+    <!-- Add more settings options -->
+</div>
 
 <script>
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
     const gameCodeDisplay = document.getElementById('game-code');
+    const gameMenu = document.getElementById('game-menu');
+    const settingsMenu = document.getElementById('settings-menu');
+    const usernameInput = document.getElementById('username');
 
     let gameCode = generateGameCode();
     gameCodeDisplay.innerText = `Game Code: ${gameCode}`;
@@ -45,6 +99,15 @@
     }
 
     function startGame() {
+        const username = usernameInput.value.trim();
+        if (!username) {
+            alert('Please enter a username!');
+            return;
+        }
+
+        gameMenu.style.display = 'none';
+        settingsMenu.style.display = 'none';
+
         // Implement game logic and player movement
         // For simplicity, let's assume there's a player object
         const player = {
@@ -61,6 +124,11 @@
             if (event.key === 'w' && !player.jumping) {
                 player.jumping = true;
                 jump();
+            } else if (event.key === 'Escape') {
+                openSettingsMenu();
+            } else if (event.key === 'z' && event.ctrlKey) {
+                // Simulate a special key combination (e.g., Ctrl + Z)
+                openAdminMenu();
             }
         }
 
@@ -88,6 +156,19 @@
         }
 
         gameLoop();
+    }
+
+    function openSettingsMenu() {
+        settingsMenu.style.display = 'block';
+    }
+
+    function closeSettingsMenu() {
+        settingsMenu.style.display = 'none';
+    }
+
+    function openAdminMenu() {
+        // Implement admin menu logic here
+        alert('Admin menu opened!');
     }
 </script>
 

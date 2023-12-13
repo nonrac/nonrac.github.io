@@ -3,136 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>renderagain</title>
+    <title>Renderagain Game</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 40px;
-            transition: background-color 0.3s, color 0.3s;
-            background-color: #111; /* Set default background color to dark */
-            color: white; /* Set default text color to white */
+            margin: 0;
+            overflow: hidden;
+            background-color: #87CEEB; /* Sky Blue */
         }
-        #message {
-            font-size: 24px;
-            color: #007BFF;
-            cursor: pointer;
-            transition: transform 0.3s ease; /* Add sliding animation */
-        }
-        #slider {
-            position: fixed;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            font-size: 36px; /* Increase the size of the slider */
-            color: #007BFF;
-            z-index: 1;
-            transition: font-size 0.3s ease; /* Add font size transition */
-        }
-        #aboutLink {
-            cursor: pointer;
-            color: #007BFF;
-            text-decoration: underline;
-        }
-        #sidebar {
-            position: fixed;
-            left: -250px;
-            width: 250px;
+        #loadingScreen, #gameScreen, #editorScreen {
+            width: 100%;
             height: 100%;
-            background: black;
-            padding-top: 20px;
-            transition: left 0.3s;
-            z-index: 2;
-        }
-        #sidebar a {
-            display: block;
-            padding: 10px;
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-        #clipOfTheDay {
-            font-size: 18px;
-            color: #007BFF;
-            margin-top: 20px;
-        }
-        /* Add dark and light themes */
-        body.dark-theme {
-            background-color: #111;
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
             color: white;
         }
-        body.light-theme {
-            background-color: #fff;
-            color: #333;
-        }
-        #footer {
-            margin-top: 20px;
-            font-size: 14px;
-            color: #555;
+        #editorScreen {
+            display: none;
         }
     </style>
 </head>
 <body>
-    <div id="slider" onclick="toggleSidebar()">^</div>
-
-    <div id="message" onclick="toggleMessage()">Renderagain has made this <3</div>
-
-    <div id="sidebar">
-        <a href="#" onclick="openInviteBot()">Invite Bot</a>
-        <a href="#" onclick="openCommands()">Commands/Help</a>
-        <a href="https://www.roblox.com/games/14810391666/CatSended" target="_blank">Roblox Game</a>
-        <!-- Add more links as needed -->
+    <div id="loadingScreen">
+        Downloading assets...
     </div>
 
-    <div id="clipOfTheDay"></div>
+    <div id="gameScreen" style="display: none;">
+        <div id="player"></div>
+        <div class="spike"></div>
+    </div>
 
-    <div id="footer">&copy; 2023 Your Company Name or Renderagain</div>
+    <div id="editorScreen">
+        <textarea id="levelCode" placeholder="Paste level code here..."></textarea>
+        <button onclick="loadLevel()">Load Level</button>
+        <button onclick="publishLevel()">Publish Level</button>
+    </div>
 
     <script>
-        function toggleTheme(theme) {
-            const body = document.body;
-            body.classList.remove('dark-theme', 'light-theme');
-            body.classList.add(theme + '-theme');
+        let loadingScreen = document.getElementById('loadingScreen');
+        let gameScreen = document.getElementById('gameScreen');
+        let editorScreen = document.getElementById('editorScreen');
+        let levelCodeInput = document.getElementById('levelCode');
+
+        // Simulate loading by delaying showing the game
+        setTimeout(() => {
+            loadingScreen.style.transform = 'translateY(-100%)';
+            loadingScreen.addEventListener('transitionend', () => {
+                loadingScreen.style.display = 'none';
+                gameScreen.style.display = 'flex';
+            });
+        }, 3000); // Simulating a 3-second loading time
+
+        // Player and spike elements
+        const player = document.createElement('div');
+        player.id = 'player';
+        const spike = document.createElement('div');
+        spike.className = 'spike';
+        gameScreen.appendChild(player);
+        gameScreen.appendChild(spike);
+
+        // Editor functionality
+        function loadLevel() {
+            let levelCode = levelCodeInput.value;
+            // Implement logic to parse and load the level based on the code
+            // (For simplicity, this example does not include the parsing logic)
         }
 
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            const currentLeft = parseInt(window.getComputedStyle(sidebar).left);
+        function publishLevel() {
+            // Implement logic to generate a level code based on the current level state
+            // (For simplicity, this example generates a random code)
+            let randomCode = Math.random().toString(36).substring(7);
+            alert(`Your level has been published!\nLevel Code: ${randomCode}`);
+        }
 
-            if (currentLeft < 0) {
-                sidebar.style.left = '0';
-            } else {
-                sidebar.style.left = '-250px';
+        // Allow users to access the editor by pressing ESC
+        document.addEventListener('keydown', (event) => {
+            if (event.code === 'Escape') {
+                showEditor();
             }
-        }
-
-        function toggleMessage() {
-            const message = document.getElementById('message');
-            message.style.display = 'none';
-
-            // Play music when "Renderagain has made this <3" is clicked
-            const audio = new Audio('Lingo.mp3');
-            audio.play();
-
-            // Add sliding animation for the message
-            message.style.transform = 'translateY(-100%)';
-        }
-
-        function openInviteBot() {
-            window.open('https://discord.com/api/oauth2/authorize?client_id=1183056996715470888&permissions=8&scope=bot', '_blank');
-        }
-
-        function openCommands() {
-            // Add logic to display the bot commands/help
-            alert("Kolton's Bot Commands:\n1. SOON...\n2. SOON...\n3. SOON....");
-        }
-
-        // Navigate to a different page when "About" is clicked
-        document.getElementById('aboutLink').addEventListener('click', function() {
-            window.location.href = 'about.html'; // Create a new HTML file for the about page
         });
+
+        // Toggle between game and editor screens
+        function showEditor() {
+            gameScreen.style.display = 'none';
+            editorScreen.style.display = 'flex';
+        }
+
+        function showGame() {
+            gameScreen.style.display = 'flex';
+            editorScreen.style.display = 'none';
+        }
     </script>
 </body>
 </html>

@@ -10,48 +10,33 @@
             overflow: hidden;
             background-color: #87CEEB; /* Sky Blue */
             font-family: 'Arial', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
         }
         .screen {
-            width: 100%;
-            height: 100%;
-            position: absolute;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
             font-size: 24px;
             color: white;
         }
-        #loadingScreen {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        #gameScreen, #editorScreen, #menuScreen {
+        #loadingScreen, #menuScreen {
             display: none;
         }
-        #player {
-            width: 50px;
-            height: 50px;
-            background-color: #00FF00; /* Green */
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
+        #loadingText {
+            margin-bottom: 20px;
         }
-        .spike {
-            width: 20px;
-            height: 20px;
-            background-color: #FF0000; /* Red */
-            position: absolute;
-            bottom: 50px;
+        #nicknameInput {
+            margin-bottom: 20px;
         }
         #menuButtons {
             display: flex;
-            margin-top: 20px;
+            flex-direction: column;
         }
         .menuButton {
-            margin: 0 10px;
+            margin: 10px 0;
             padding: 10px 20px;
             background-color: #007BFF; /* Blue */
             color: white;
@@ -63,121 +48,77 @@
         .menuButton:hover {
             background-color: #0056b3; /* Darker Blue on hover */
         }
-        #levelScreen, #moreComingSoon {
-            display: none;
-        }
-        #levelScreen {
-            flex-direction: row;
-        }
-        #levelTitle {
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
-        #levelButtons {
-            display: flex;
-            align-items: center;
-        }
-        .levelButton {
-            margin: 0 10px;
-            padding: 10px 20px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            font-size: 18px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .levelButton:hover {
-            background-color: #0056b3;
-        }
     </style>
 </head>
 <body>
     <div id="loadingScreen" class="screen">
-        Downloading assets...<br>
-        <span id="gameTitle" style="display: none;">Renderagain's Game</span>
-        <div id="menuButtons" style="display: none;">
-            <button class="menuButton" onclick="showGameMenu()">Play</button>
-            <button class="menuButton" onclick="showJoinMenu()">Join</button>
-        </div>
-    </div>
-
-    <div id="gameScreen" class="screen">
-        <div id="player"></div>
-        <div class="spike"></div>
+        <div id="loadingText">Loading...</div>
     </div>
 
     <div id="menuScreen" class="screen">
-        <span id="menuTitle">Renderagain's Game</span>
+        <div id="nicknameInput">
+            <label for="nickname">Change Nickname:</label>
+            <input type="text" id="nickname" placeholder="Enter your nickname">
+        </div>
         <div id="menuButtons">
-            <button class="menuButton" onclick="showLevelScreen()">Play</button>
-            <button class="menuButton" onclick="showJoinMenu()">Join</button>
+            <button class="menuButton" onclick="playMultiplayerGame()">Play Multiplayer Game</button>
         </div>
-    </div>
-
-    <div id="levelScreen" class="screen">
-        <span id="levelTitle">Level 1</span>
-        <div id="levelButtons">
-            <button class="levelButton" onclick="playLevel()">Play</button>
-            <button class="levelButton" onclick="showMoreComingSoon()">></button>
-        </div>
-    </div>
-
-    <div id="moreComingSoon" class="screen">
-        <span id="comingSoonText">More coming soon...</span>
     </div>
 
     <script>
         let loadingScreen = document.getElementById('loadingScreen');
-        let gameTitle = document.getElementById('gameTitle');
-        let menuButtons = document.getElementById('menuButtons');
-        let gameScreen = document.getElementById('gameScreen');
         let menuScreen = document.getElementById('menuScreen');
-        let levelScreen = document.getElementById('levelScreen');
-        let moreComingSoonScreen = document.getElementById('moreComingSoon');
+        let loadingText = document.getElementById('loadingText');
 
-        // Simulate loading by delaying showing the game
         setTimeout(() => {
-            loadingScreen.style.transform = 'translateY(-100%)';
-            loadingScreen.addEventListener('transitionend', () => {
-                loadingScreen.style.display = 'none';
-                gameTitle.style.display = 'block';
-                menuButtons.style.display = 'flex';
-            });
-        }, 3000); // Simulating a 3-second loading time
+            loadingText.textContent = 'Loading...';
+        }, 5000);
 
-        // Player and spike elements
-        const player = document.getElementById('player');
-        const spike = document.querySelector('.spike');
+        setTimeout(() => {
+            loadingText.textContent = 'Loading....';
+        }, 10000);
 
-        // Screens transitions
-        function showGameMenu() {
-            gameScreen.style.display = 'none';
+        setTimeout(() => {
+            loadingText.textContent = 'Loading...';
+        }, 15000);
+
+        setTimeout(() => {
+            loadingText.textContent = 'Loading....';
+        }, 20000);
+
+        setTimeout(() => {
+            loadingScreen.style.display = 'none';
             menuScreen.style.display = 'flex';
+            playTTS('Hello, thank you for choosing nonrac.github.io');
+        }, 25000);
+
+        function playTTS(message) {
+            if ('speechSynthesis' in window) {
+                const synth = window.speechSynthesis;
+                const utterance = new SpeechSynthesisUtterance(message);
+                synth.speak(utterance);
+            } else {
+                console.log('Speech synthesis not supported in this browser.');
+            }
         }
 
-        function showJoinMenu() {
-            // Implement logic for joining others (for simplicity, just show a random code)
-            alert(`Join code: ${generateRandomCode()}`);
+        function playMultiplayerGame() {
+            const nicknameInput = document.getElementById('nickname');
+            const nickname = nicknameInput.value.trim();
+
+            // Check if the nickname is valid (not 3 letters, not a number, not symbols)
+            if (nickname.length !== 3 && !/^\d+$/.test(nickname) && /^[a-zA-Z]+$/.test(nickname)) {
+                alert('Nickname is valid! Starting multiplayer game...');
+                // Implement logic to start the multiplayer game
+                showGameMenu();
+            } else {
+                alert('Invalid nickname. Please enter a valid nickname.');
+            }
         }
 
-        function showLevelScreen() {
-            menuScreen.style.display = 'none';
-            levelScreen.style.display = 'flex';
-        }
-
-        function showMoreComingSoon() {
-            levelScreen.style.display = 'none';
-            moreComingSoonScreen.style.display = 'flex';
-        }
-
-        function playLevel() {
-            // Implement logic to load and play the selected level
-            alert('Playing Level 1');
-        }
-
-        function generateRandomCode() {
-            return Math.random().toString(36).substring(2, 8).toUpperCase();
+        function showGameMenu() {
+            // Implement logic for the game menu
+            console.log('Game menu logic goes here');
         }
     </script>
 </body>

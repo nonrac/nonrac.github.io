@@ -3,85 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Geometry Dash</title>
+    <title>Multiplayer Game</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             overflow: hidden;
+            background-color: #87CEEB; /* Sky Blue */
         }
         canvas {
             display: block;
-            background-color: #87CEEB; /* Sky Blue */
             margin: 0 auto;
+            background-color: #fff;
         }
-        #game-menu {
-            text-align: center;
-            padding: 20px;
-            background-color: #333;
+        #game-code {
+            position: absolute;
+            top: 10px;
+            left: 10px;
             color: white;
-        }
-        #level-editor {
-            display: none;
-            text-align: center;
-            padding: 20px;
-            background-color: #333;
-            color: white;
-        }
-        #level-editor button {
-            margin: 10px;
-            padding: 10px 20px;
-            background-color: #007BFF; /* Blue */
-            color: white;
-            border: none;
             font-size: 18px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        #level-editor button:hover {
-            background-color: #0056b3; /* Darker Blue on hover */
         }
     </style>
 </head>
 <body>
 
-<div id="game-menu">
-    <h1>Geometry Dash</h1>
-    <button onclick="startGame()">Start Game</button>
-    <button onclick="openLevelEditor()">Level Editor</button>
-</div>
-
-<div id="level-editor">
-    <h1>Level Editor</h1>
-    <button onclick="closeLevelEditor()">Close Editor</button>
-    <!-- Add more UI elements for level editing -->
-</div>
+<div id="game-code"></div>
 
 <canvas id="gameCanvas" width="800" height="400"></canvas>
 
 <script>
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
-    const gameMenu = document.getElementById('game-menu');
-    const levelEditor = document.getElementById('level-editor');
+    const gameCodeDisplay = document.getElementById('game-code');
+
+    let gameCode = generateGameCode();
+    gameCodeDisplay.innerText = `Game Code: ${gameCode}`;
+
+    function generateGameCode() {
+        return Math.random().toString(36).substring(2, 8).toUpperCase();
+    }
 
     function startGame() {
-        gameMenu.style.display = 'none';
-        levelEditor.style.display = 'none';
-        // Implement game logic
-    }
+        // Implement game logic and player movement
+        // For simplicity, let's assume there's a player object
+        const player = {
+            x: 50,
+            y: 50,
+            speed: 5,
+            jumping: false
+        };
 
-    function openLevelEditor() {
-        gameMenu.style.display = 'none';
-        levelEditor.style.display = 'block';
-        // Implement level editor logic
-    }
+        document.addEventListener('keydown', handleKeyDown);
+        document.addEventListener('keyup', handleKeyUp);
 
-    function closeLevelEditor() {
-        gameMenu.style.display = 'block';
-        levelEditor.style.display = 'none';
-        // Implement logic to save level data, etc.
+        function handleKeyDown(event) {
+            if (event.key === 'w' && !player.jumping) {
+                player.jumping = true;
+                jump();
+            }
+        }
+
+        function handleKeyUp(event) {
+            // Implement other key events (e.g., A, S, D)
+        }
+
+        function jump() {
+            player.y -= 50; // Adjust this value for the desired jump height
+            setTimeout(() => {
+                player.y += 50;
+                player.jumping = false;
+            }, 500); // Adjust this value for the desired jump duration
+        }
+
+        function gameLoop() {
+            // Implement game rendering and logic here
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#000';
+            ctx.fillRect(player.x, player.y, 20, 20);
+
+            // Update player position, handle collisions, etc.
+
+            requestAnimationFrame(gameLoop);
+        }
+
+        gameLoop();
     }
 </script>
 

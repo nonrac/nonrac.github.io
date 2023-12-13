@@ -9,8 +9,9 @@
             margin: 0;
             overflow: hidden;
             background-color: #87CEEB; /* Sky Blue */
+            font-family: 'Arial', sans-serif;
         }
-        #loadingScreen, #gameScreen, #editorScreen {
+        .screen {
             width: 100%;
             height: 100%;
             position: absolute;
@@ -21,80 +22,162 @@
             font-size: 24px;
             color: white;
         }
-        #editorScreen {
+        #loadingScreen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #gameScreen, #editorScreen, #menuScreen {
             display: none;
+        }
+        #player {
+            width: 50px;
+            height: 50px;
+            background-color: #00FF00; /* Green */
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .spike {
+            width: 20px;
+            height: 20px;
+            background-color: #FF0000; /* Red */
+            position: absolute;
+            bottom: 50px;
+        }
+        #menuButtons {
+            display: flex;
+            margin-top: 20px;
+        }
+        .menuButton {
+            margin: 0 10px;
+            padding: 10px 20px;
+            background-color: #007BFF; /* Blue */
+            color: white;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .menuButton:hover {
+            background-color: #0056b3; /* Darker Blue on hover */
+        }
+        #levelScreen, #moreComingSoon {
+            display: none;
+        }
+        #levelScreen {
+            flex-direction: row;
+        }
+        #levelTitle {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        #levelButtons {
+            display: flex;
+            align-items: center;
+        }
+        .levelButton {
+            margin: 0 10px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .levelButton:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
-    <div id="loadingScreen">
-        Downloading assets...
+    <div id="loadingScreen" class="screen">
+        Downloading assets...<br>
+        <span id="gameTitle" style="display: none;">Renderagain's Game</span>
+        <div id="menuButtons" style="display: none;">
+            <button class="menuButton" onclick="showGameMenu()">Play</button>
+            <button class="menuButton" onclick="showJoinMenu()">Join</button>
+        </div>
     </div>
 
-    <div id="gameScreen" style="display: none;">
+    <div id="gameScreen" class="screen">
         <div id="player"></div>
         <div class="spike"></div>
     </div>
 
-    <div id="editorScreen">
-        <textarea id="levelCode" placeholder="Paste level code here..."></textarea>
-        <button onclick="loadLevel()">Load Level</button>
-        <button onclick="publishLevel()">Publish Level</button>
+    <div id="menuScreen" class="screen">
+        <span id="menuTitle">Renderagain's Game</span>
+        <div id="menuButtons">
+            <button class="menuButton" onclick="showLevelScreen()">Play</button>
+            <button class="menuButton" onclick="showJoinMenu()">Join</button>
+        </div>
+    </div>
+
+    <div id="levelScreen" class="screen">
+        <span id="levelTitle">Level 1</span>
+        <div id="levelButtons">
+            <button class="levelButton" onclick="playLevel()">Play</button>
+            <button class="levelButton" onclick="showMoreComingSoon()">></button>
+        </div>
+    </div>
+
+    <div id="moreComingSoon" class="screen">
+        <span id="comingSoonText">More coming soon...</span>
     </div>
 
     <script>
         let loadingScreen = document.getElementById('loadingScreen');
+        let gameTitle = document.getElementById('gameTitle');
+        let menuButtons = document.getElementById('menuButtons');
         let gameScreen = document.getElementById('gameScreen');
-        let editorScreen = document.getElementById('editorScreen');
-        let levelCodeInput = document.getElementById('levelCode');
+        let menuScreen = document.getElementById('menuScreen');
+        let levelScreen = document.getElementById('levelScreen');
+        let moreComingSoonScreen = document.getElementById('moreComingSoon');
 
         // Simulate loading by delaying showing the game
         setTimeout(() => {
             loadingScreen.style.transform = 'translateY(-100%)';
             loadingScreen.addEventListener('transitionend', () => {
                 loadingScreen.style.display = 'none';
-                gameScreen.style.display = 'flex';
+                gameTitle.style.display = 'block';
+                menuButtons.style.display = 'flex';
             });
         }, 3000); // Simulating a 3-second loading time
 
         // Player and spike elements
-        const player = document.createElement('div');
-        player.id = 'player';
-        const spike = document.createElement('div');
-        spike.className = 'spike';
-        gameScreen.appendChild(player);
-        gameScreen.appendChild(spike);
+        const player = document.getElementById('player');
+        const spike = document.querySelector('.spike');
 
-        // Editor functionality
-        function loadLevel() {
-            let levelCode = levelCodeInput.value;
-            // Implement logic to parse and load the level based on the code
-            // (For simplicity, this example does not include the parsing logic)
-        }
-
-        function publishLevel() {
-            // Implement logic to generate a level code based on the current level state
-            // (For simplicity, this example generates a random code)
-            let randomCode = Math.random().toString(36).substring(7);
-            alert(`Your level has been published!\nLevel Code: ${randomCode}`);
-        }
-
-        // Allow users to access the editor by pressing ESC
-        document.addEventListener('keydown', (event) => {
-            if (event.code === 'Escape') {
-                showEditor();
-            }
-        });
-
-        // Toggle between game and editor screens
-        function showEditor() {
+        // Screens transitions
+        function showGameMenu() {
             gameScreen.style.display = 'none';
-            editorScreen.style.display = 'flex';
+            menuScreen.style.display = 'flex';
         }
 
-        function showGame() {
-            gameScreen.style.display = 'flex';
-            editorScreen.style.display = 'none';
+        function showJoinMenu() {
+            // Implement logic for joining others (for simplicity, just show a random code)
+            alert(`Join code: ${generateRandomCode()}`);
+        }
+
+        function showLevelScreen() {
+            menuScreen.style.display = 'none';
+            levelScreen.style.display = 'flex';
+        }
+
+        function showMoreComingSoon() {
+            levelScreen.style.display = 'none';
+            moreComingSoonScreen.style.display = 'flex';
+        }
+
+        function playLevel() {
+            // Implement logic to load and play the selected level
+            alert('Playing Level 1');
+        }
+
+        function generateRandomCode() {
+            return Math.random().toString(36).substring(2, 8).toUpperCase();
         }
     </script>
 </body>

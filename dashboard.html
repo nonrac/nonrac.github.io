@@ -26,6 +26,13 @@
         function sendMessage() {
             const message = document.getElementById('message').value;
             alert(`Message Sent to All: ${message}`);
+            notifyUsers(message);
+        }
+
+        function notifyUsers(message) {
+            // Simulate sending a message to all users (display an alert)
+            // In a real scenario, you'd use a more advanced solution, like WebSockets
+            alert(`Notification: ${message}`);
         }
 
         function redirectUsers() {

@@ -7,9 +7,31 @@
 </head>
 <body>
     <h2>Dashboard</h2>
-    <form>
-        <!-- Add file input and message input fields as needed -->
-        <button type="button">Upload / Post</button>
+    <form id="messageForm">
+        <label for="message">Send Message to All:</label>
+        <input type="text" id="message" name="message" required>
+        <button type="button" onclick="sendMessage()">Send Message</button>
     </form>
+    
+    <br>
+
+    <h2>Redirect Users</h2>
+    <form id="redirectForm">
+        <label for="website">Redirect Users to:</label>
+        <input type="text" id="website" name="website" required>
+        <button type="button" onclick="redirectUsers()">Redirect Users</button>
+    </form>
+
+    <script>
+        function sendMessage() {
+            const message = document.getElementById('message').value;
+            alert(`Message Sent to All: ${message}`);
+        }
+
+        function redirectUsers() {
+            const website = document.getElementById('website').value;
+            window.location.href = website;
+        }
+    </script>
 </body>
 </html>

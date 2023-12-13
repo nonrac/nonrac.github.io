@@ -7,7 +7,7 @@
 </head>
 <body>
     <h2>Login</h2>
-    <form action="dashboard.html">
+    <form onsubmit="return validateLogin()">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required>
         <br>
@@ -16,5 +16,22 @@
         <br>
         <button type="submit">Login</button>
     </form>
+
+    <script>
+        function validateLogin() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Validate username and password
+            if (username === 'owner' && password === 'ownerpassword') {
+                // Redirect to the dashboard or perform other actions
+                window.location.href = 'dashboard.html';
+                return false; // Prevent form submission
+            } else {
+                alert('Invalid username or password');
+                return false; // Prevent form submission
+            }
+        }
+    </script>
 </body>
 </html>

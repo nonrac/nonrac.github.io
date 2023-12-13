@@ -3,34 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Money Counter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        input {
+            padding: 8px;
+            margin: 10px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #result {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h2>Login</h2>
-    <form onsubmit="return validateLogin()">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-        <br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <br>
-        <button type="submit">Login</button>
-    </form>
+    <h2>Money Counter</h2>
+    <label for="bills">Enter the number of bills:</label>
+    <input type="number" id="bills" min="0">
+
+    <br>
+
+    <label for="coins">Enter the number of coins:</label>
+    <input type="number" id="coins" min="0">
+
+    <br>
+
+    <button onclick="calculateTotal()">Calculate Total</button>
+
+    <div id="result"></div>
 
     <script>
-        function validateLogin() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
+        function calculateTotal() {
+            const billsCount = parseInt(document.getElementById('bills').value) || 0;
+            const coinsCount = parseInt(document.getElementById('coins').value) || 0;
 
-            // Validate username and password
-            if (username === 'owner' && password === 'ownerpassword') {
-                // Redirect to the dashboard
-                window.location.href = 'dashboard.html';
-                return false; // Prevent form submission
-            } else {
-                alert('Invalid username or password');
-                return false; // Prevent form submission
-            }
+            const totalAmount = calculateAmount(billsCount, coinsCount);
+
+            document.getElementById('result').innerText = `Total Amount: $${totalAmount.toFixed(2)}`;
+        }
+
+        function calculateAmount(billsCount, coinsCount) {
+            const billValue = 1; // Replace with the actual value of the bill
+            const coinValue = 0.25; // Replace with the actual value of the coin
+
+            const totalAmount = (billsCount * billValue) + (coinsCount * coinValue);
+
+            return totalAmount;
         }
     </script>
 </body>

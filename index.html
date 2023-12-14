@@ -3,67 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Money Counter</title>
+    <title>Login Page</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
             margin: 50px;
         }
-
-        input {
-            padding: 8px;
-            margin: 10px;
+        #login-form {
+            display: inline-block;
+            text-align: left;
         }
-
-        button {
-            padding: 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
+        #render {
+            font-size: 24px;
             cursor: pointer;
+            display: none;
+            margin-top: 20px;
         }
-
-        #result {
+        #render-again {
+            font-size: 24px;
+            cursor: pointer;
+            display: none;
+        }
+        #message {
             font-size: 18px;
             margin-top: 20px;
+        }
+        #thumbs-up {
+            font-size: 24px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <h2>Money Counter</h2>
-    <label for="bills">Enter the number of bills:</label>
-    <input type="number" id="bills" min="0">
 
-    <br>
+    <div id="login-form">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br>
 
-    <label for="coins">Enter the number of coins:</label>
-    <input type="number" id="coins" min="0">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br>
 
-    <br>
+        <button onclick="login()">Login</button>
+    </div>
 
-    <button onclick="calculateTotal()">Calculate Total</button>
-
-    <div id="result"></div>
+    <div id="render" onclick="render()">Render</div>
+    <div id="render-again" onclick="renderAgain()">Render Again</div>
+    <div id="message"></div>
+    <div id="thumbs-up" onclick="increaseThumbsUp()">👍</div>
 
     <script>
-        function calculateTotal() {
-            const billsCount = parseInt(document.getElementById('bills').value) || 0;
-            const coinsCount = parseInt(document.getElementById('coins').value) || 0;
+        function login() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
 
-            const totalAmount = calculateAmount(billsCount, coinsCount);
-
-            document.getElementById('result').innerText = `Total Amount: $${totalAmount.toFixed(2)}`;
+            if (username === 'user' && password === 'password') {
+                document.getElementById('login-form').style.display = 'none';
+                document.getElementById('render').style.display = 'inline-block';
+            } else {
+                alert('Invalid username or password');
+            }
         }
 
-        function calculateAmount(billsCount, coinsCount) {
-            const billValue = 1; // Replace with the actual value of the bill
-            const coinValue = 0.25; // Replace with the actual value of the coin
+        function render() {
+            document.getElementById('render').style.display = 'none';
+            document.getElementById('render-again').style.display = 'inline-block';
+            document.getElementById('message').innerHTML = 'Thank you so much for waiting!';
+        }
 
-            const totalAmount = (billsCount * billValue) + (coinsCount * coinValue);
+        function renderAgain() {
+            document.getElementById('render-again').style.display = 'none';
+            document.getElementById('message').innerHTML = '';
+            document.getElementById('thumbs-up').style.display = 'inline-block';
+        }
 
-            return totalAmount;
+        var thumbsUpCount = 0;
+        function increaseThumbsUp() {
+            thumbsUpCount++;
+            alert('Thumbs Up Count: ' + thumbsUpCount);
         }
     </script>
+
 </body>
 </html>

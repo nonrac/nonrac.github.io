@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Spookyland.ca</title>
+
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #fff;
+        }
+
+        .top-bar, .bottom-bar {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 50px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #333;
+            overflow-x: hidden;
+            transition: 0.5s;
+        }
+
+        .open-sidebar {
+            font-size: 2em;
+            color: #fff;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .sidebar-content {
+            display: none;
+            padding-top: 20px;
+            background-color: #444;
+        }
+
+        .sidebar-content p {
+            padding: 10px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .content {
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px; /* Added margin to create space for the box frame */
+        }
+
+        .box-frame {
+            border: 2px solid #fff;
+            padding: 20px;
+            display: inline-block;
+        }
+
+        .content h1, .content p {
+            margin-bottom: 20px;
+        }
+
+        .buttons {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .buttons button {
+            margin: 5px;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .shake {
+            animation: shake 0.5s;
+        }
+
+        /* Style for fullscreen mode */
+        .fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #1a1a1a;
+            z-index: 1000;
+        }
+
+        /* Style for copyright notice */
+        .copyright-notice {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            display: none;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <!-- Removed "From Owner" text -->
+    </div>
+    
+    <div class="sidebar">
+        <div class="open-sidebar" onclick="toggleSidebar()">></div>
+        <div class="sidebar-content">
+            <p onclick="openDiscord()">Discord Server</p>
+            <p>Press F9 to go in full screen</p>
+            <p>Press F5 to exit full screen</p>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="box-frame">
+            <h1>Website is Being Worked On</h1>
+            <p>Sorry For The Wait</p>
+            <p>Date: 1/5/2024</p>
+        </div>
+
+        <div class="buttons" id="buttons">
+            <button onclick="openContactMe()">Contact Me</button>
+        </div>
+    </div>
+
+    <div class="copyright-notice" id="copyrightNotice">
+        @Copyright Spookyland.ca 2024
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            const content = document.querySelector('.content');
+            const buttons = document.querySelector('.buttons');
+
+            sidebar.classList.toggle('shake');
+
+            if (sidebar.style.width === '250px') {
+                sidebar.style.width = '50px';
+                content.style.marginLeft = '50px';
+            } else {
+                sidebar.style.width = '250px';
+                content.style.marginLeft = '250px';
+                setTimeout(() => {
+                    buttons.style.display = 'block';
+                }, 500); // Wait for the shaking animation to complete
+            }
+        }
+
+        function openDiscord() {
+            window.location.href = 'https://discord.gg/N5Q86dvxGs';
+        }
+
+        function openContactMe() {
+            window.location.href = 'https://www.roblox.com/users/5123173433/profile';
+        }
+
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'F9') {
+                toggleFullscreen();
+            }
+        });
+
+        function toggleFullscreen() {
+            const element = document.documentElement;
+
+            if (!document.fullscreenElement) {
+                if (element.requestFullscreen) {
+                    element.requestFullscreen();
+                } else if (element.mozRequestFullScreen) { // Firefox
+                    element.mozRequestFullScreen();
+                } else if (element.webkitRequestFullscreen) { // Chrome, Safari and Opera
+                    element.webkitRequestFullscreen();
+                } else if (element.msRequestFullscreen) { // IE/Edge
+                    element.msRequestFullscreen();
+                }
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+            }
+        }
+
+        // Show copyright notice when scrolling down
+        window.onscroll = function() {
+            const copyrightNotice = document.getElementById('copyrightNotice');
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                copyrightNotice.style.display = 'block';
+            } else {
+                copyrightNotice.style.display = 'none';
+            }
+        };
+    </script>
+</body>
+</html>

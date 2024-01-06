@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,8 +12,14 @@
             margin: 0;
             overflow: hidden;
             font-family: Arial, sans-serif;
-            background-color: #1a1a1a;
             color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-image: url('https://cdn.discordapp.com/attachments/1189388420733222913/1193241030036832266/rQnFpiJ.jpg?ex=65abff4e&is=65998a4e&hm=1e275977e452ab4d5dee426edba12b2762c4759a46e65ef27cc876cf69cd166e&');
+            background-size: cover;
+            background-position: center;
         }
 
         .top-bar, .bottom-bar {
@@ -40,7 +47,9 @@
         }
 
         .sidebar-content {
-            display: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             padding-top: 20px;
             background-color: #444;
         }
@@ -49,6 +58,7 @@
             padding: 10px;
             color: #fff;
             cursor: pointer;
+            margin: 0;
         }
 
         .content {
@@ -108,36 +118,44 @@
             display: none;
             z-index: 1000;
         }
+
+        /* Style for the audio player */
+        #audio-player {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            text-align: center;
+        }
+
+        /* Hide default audio controls */
+        #audio-player audio {
+            display: none;
+        }
     </style>
 </head>
+
 <body>
     <div class="top-bar">
         <!-- Removed "From Owner" text -->
     </div>
-    
+
     <div class="sidebar">
-        <div class="open-sidebar" onclick="toggleSidebar()">></div>
+        <div class="open-sidebar" onclick="toggleSidebar()">≡</div>
         <div class="sidebar-content">
-            <p onclick="openDiscord()">Discord Server</p>
-            <p>Press F9 to go in full screen</p>
-            <p>Press F5 to exit full screen</p>
+            <p onclick="openDiscord()">Discord</p>
         </div>
     </div>
 
     <div class="content">
         <div class="box-frame">
-            <h1>Website is Being Worked On</h1>
-            <p>Sorry For The Wait</p>
+            <h1>Website Under Construction</h1>
+            <p>We apologize for the inconvenience.</p>
             <p>Date: 1/5/2024</p>
         </div>
-
-        <div class="buttons" id="buttons">
-            <button onclick="openContactMe()">Contact Me</button>
-        </div>
-    </div>
-
-    <div class="copyright-notice" id="copyrightNotice">
-        @Copyright Spookyland.ca 2024
     </div>
 
     <script>
@@ -151,6 +169,7 @@
             if (sidebar.style.width === '250px') {
                 sidebar.style.width = '50px';
                 content.style.marginLeft = '50px';
+                buttons.style.display = 'none';
             } else {
                 sidebar.style.width = '250px';
                 content.style.marginLeft = '250px';
@@ -161,11 +180,7 @@
         }
 
         function openDiscord() {
-            window.location.href = 'https://discord.gg/N5Q86dvxGs';
-        }
-
-        function openContactMe() {
-            window.location.href = 'https://www.roblox.com/users/5123173433/profile';
+            window.location.href = 'https://discord.gg/XKBZqTKXsM';
         }
 
         document.addEventListener('keydown', function (event) {
@@ -182,7 +197,7 @@
                     element.requestFullscreen();
                 } else if (element.mozRequestFullScreen) { // Firefox
                     element.mozRequestFullScreen();
-                } else if (element.webkitRequestFullscreen) { // Chrome, Safari and Opera
+                } else if (element.webkitRequestFullscreen) { // Chrome, Safari, and Opera
                     element.webkitRequestFullscreen();
                 } else if (element.msRequestFullscreen) { // IE/Edge
                     element.msRequestFullscreen();
@@ -200,15 +215,15 @@
             }
         }
 
-        // Show copyright notice when scrolling down
-        window.onscroll = function() {
-            const copyrightNotice = document.getElementById('copyrightNotice');
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                copyrightNotice.style.display = 'block';
-            } else {
-                copyrightNotice.style.display = 'none';
-            }
+        window.onscroll = function () {
+            // You can add custom scroll-related actions here if needed
         };
     </script>
+
+    <audio id="audio-player" autoplay loop>
+        <source src="YEAT.mp3" type="audio/mp3">
+        Your browser does not support the audio tag.
+    </audio>
 </body>
+
 </html>

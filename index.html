@@ -22,12 +22,6 @@
             background-position: center;
         }
 
-        .top-bar, .bottom-bar {
-            text-align: center;
-            padding: 10px;
-            background-color: #333;
-        }
-
         .sidebar {
             height: 100%;
             width: 50px;
@@ -71,11 +65,12 @@
             border: 2px solid #fff;
             padding: 20px;
             display: inline-block;
+            color: red; /* Text color is set to red */
+            cursor: pointer; /* Add this line to make it clickable */
         }
 
         .content h1, .content p {
             margin-bottom: 20px;
-            cursor: pointer;
         }
 
         .buttons {
@@ -136,26 +131,10 @@
         #audio-player audio {
             display: none;
         }
-
-        /* Additional style for the Discord widget iframe */
-        #discord-widget {
-            position: fixed;
-            top: 50%;
-            right: 0;
-            transform: translate(0, -50%);
-            width: 350px;
-            height: 500px;
-            background-color: rgba(0, 0, 0, 0.7);
-            border: none;
-        }
     </style>
 </head>
 
 <body>
-    <div class="top-bar">
-        <!-- Removed "From Owner" text -->
-    </div>
-
     <div class="sidebar">
         <div class="open-sidebar" onclick="toggleSidebar()">≡</div>
         <div class="sidebar-content">
@@ -165,9 +144,9 @@
 
     <div class="content">
         <div class="box-frame" onclick="playMusic()">
-            <h1>Website Under Construction</h1>
-            <p>We apologize for the inconvenience.</p>
-            <p>Date: 1/5/2024</p>
+            <h1 style="background-color: #333;">Website Under Construction</h1>
+            <p style="background-color: #333;">We apologize for the inconvenience.<br>Date: 1/5/2024</p>
+            <p style="background-color: #333;">Press on The Red For Yeat</p>
         </div>
     </div>
 
@@ -194,6 +173,11 @@
 
         function openDiscord() {
             window.location.href = 'https://discord.gg/XKBZqTKXsM';
+        }
+
+        function playMusic() {
+            const audioPlayer = document.getElementById('audio-player');
+            audioPlayer.play();
         }
 
         document.addEventListener('keydown', function (event) {
@@ -231,21 +215,8 @@
         window.onscroll = function () {
             // You can add custom scroll-related actions here if needed
         };
-
-        function playMusic() {
-            const audio = document.getElementById('audio-player');
-            audio.play();
-            document.querySelector('.box-frame').removeAttribute('onclick'); // Remove click event after
-            audio.play();
-            document.querySelector('.box-frame').removeAttribute('onclick'); // Remove click event after playing
-        }
     </script>
 
     <audio id="audio-player" autoplay loop>
         <source src="YEAT.mp3" type="audio/mp3">
-        Your browser does not support the audio tag.
     </audio>
-
-</body>
-
-</html>

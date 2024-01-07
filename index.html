@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -190,9 +189,9 @@
 
             // Set song details dynamically
             musicPage.innerHTML = `
-                <h1>Chief Keef - Love Sosa (sped up)</h1>
-                <p>Artist: Chief Keef</p>
-                <img src="moveit.jpg" alt="Album Cover">
+                <h1>Swag - Target</h1>
+                <p>Artist: targeteater</p>
+                <img src="target.png" alt="Album Cover">
             `;
             // Show the song lyrics
             songLyrics.style.display = 'block';
@@ -207,10 +206,14 @@
                 window.location.href = '/';
             });
         }
-
+array.forEach(element => {
+    
+});
+        
         function openLyrics() {
             window.open('https://www.youtube.com/watch?v=sNDfrWs8CWk&list=RDEMaorR9n0BZMdRNsnZMjT77Q&index=25&ab_channel=LilCla', '_blank');
         }
+    
 
         document.addEventListener('keydown', function (event) {
             if (event.key === 'F9') {
@@ -246,13 +249,16 @@
         }
 
         window.onscroll = function () {
-            // You can add custom scroll-related actions here if needed
+      
         };
     </script>
 
     <audio id="audio-player" autoplay loop>
-        <source src="keef.mp3" type="audio/mp3">
+        <source src="swag.mp3" type="audio/mp3">
     </audio>
+
+    
 </body>
+
 
 </html>

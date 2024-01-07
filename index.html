@@ -65,7 +65,7 @@
             border: 2px solid #fff;
             padding: 20px;
             display: inline-block;
-            color: red; /* Text color is set to red */
+            color: rgb(21, 255, 0); /* Text color is set to red */
             cursor: pointer; /* Add this line to make it clickable */
         }
 
@@ -127,6 +127,15 @@
         #audio-player audio {
             display: none;
         }
+
+        .song-lyrics {
+            position: fixed;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            color: #fff;
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -135,6 +144,7 @@
         <div class="open-sidebar" onclick="toggleSidebar()">≡</div>
         <div class="sidebar-content">
             <p onclick="openDiscord()">Discord</p>
+            <p class="song-lyrics" onclick="openLyrics()">Lyrics</p>
         </div>
     </div>
 
@@ -142,7 +152,7 @@
         <div class="box-frame" onclick="openMusic()">
             <h1 style="background-color: #333;">Website Under Construction</h1>
             <p style="background-color: #333;">We apologize for the inconvenience.<br>Date: 1/5/2024</p>
-            <p style="background-color: #333;">Press on The Red</p>
+            <p style="background-color: #333;">Press on The Text</p>
         </div>
     </div>
 
@@ -173,22 +183,33 @@
 
         function openMusic() {
             const musicPage = document.querySelector('.content');
+            const songLyrics = document.querySelector('.song-lyrics');
             const sidebarContent = document.querySelector('.sidebar-content');
 
             sidebarContent.innerHTML = ""; // Remove content from sidebar
 
-            // Simulating fetching song data after 3 seconds
-            setTimeout(() => {
-                // Set song details dynamically
-                document.querySelector('.content h1').innerText = 'Chief Keef - Love Sosa (sped up)';
-                document.querySelector('.content p').innerText = 'Artist: Chief Keef';
-                // Change 'album_cover.jpg' to the actual path of your album cover image
-                document.querySelector('.content img').src = 'moveit.jpg';
+            // Set song details dynamically
+            musicPage.innerHTML = `
+                <h1>Chief Keef - Love Sosa (sped up)</h1>
+                <p>Artist: Chief Keef</p>
+                <img src="moveit.jpg" alt="Album Cover">
+            `;
+            // Show the song lyrics
+            songLyrics.style.display = 'block';
 
-                // Play the song
-                const audioPlayer = document.getElementById('audio-player');
-                audioPlayer.play();
-            }, 3000);
+            // Play the song
+            const audioPlayer = document.getElementById('audio-player');
+            audioPlayer.play();
+
+            // Event listener for the end of the song
+            audioPlayer.addEventListener('ended', function() {
+                // Redirect back to the home page
+                window.location.href = '/';
+            });
+        }
+
+        function openLyrics() {
+            window.open('https://www.youtube.com/watch?v=sNDfrWs8CWk&list=RDEMaorR9n0BZMdRNsnZMjT77Q&index=25&ab_channel=LilCla', '_blank');
         }
 
         document.addEventListener('keydown', function (event) {
@@ -202,12 +223,13 @@
 
             if (!document.fullscreenElement) {
                 if (element.requestFullscreen) {
+                   
                     element.requestFullscreen();
-                } else if (element.mozRequestFullScreen) { // Firefox
+                } else if (element.mozRequestFullScreen) {
                     element.mozRequestFullScreen();
-                } else if (element.webkitRequestFullscreen) { // Chrome, Safari, and Opera
+                } else if (element.webkitRequestFullscreen) {
                     element.webkitRequestFullscreen();
-                } else if (element.msRequestFullscreen) { // IE/Edge
+                } else if (element.msRequestFullscreen) {
                     element.msRequestFullscreen();
                 }
             } else {

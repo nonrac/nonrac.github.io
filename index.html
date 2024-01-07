@@ -69,7 +69,23 @@
             cursor: pointer; /* Add this line to make it clickable */
         }
 
-        .content h1, .content p {
+        .music-page {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        .music-page h1,
+        .music-page p {
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .music-page img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
             margin-bottom: 20px;
         }
 
@@ -139,6 +155,7 @@
         <div class="open-sidebar" onclick="toggleSidebar()">≡</div>
         <div class="sidebar-content">
             <p onclick="openDiscord()">Discord</p>
+            <p onclick="openMusic()">Music</p>
         </div>
     </div>
 
@@ -146,8 +163,15 @@
         <div class="box-frame" onclick="playMusic()">
             <h1 style="background-color: #333;">Website Under Construction</h1>
             <p style="background-color: #333;">We apologize for the inconvenience.<br>Date: 1/5/2024</p>
-            <p style="background-color: #333;">Press on The Red For Yeat</p>
+            <p style="background-color: #333;">Press on The Red</p>
         </div>
+    </div>
+
+    <div class="music-page" style="display: none;">
+        <!-- Music Page content -->
+        <h1>Song Title</h1>
+        <p>Artist: targeteater</p>
+        <img src="album_cover.jpg" alt="Album Cover">
     </div>
 
     <script>
@@ -180,6 +204,20 @@
             audioPlayer.play();
         }
 
+        function openMusic() {
+            const musicPage = document.querySelector('.music-page');
+            musicPage.style.display = 'block';
+
+            // Simulating fetching song data after 3 seconds
+            setTimeout(() => {
+                // Set song details dynamically
+                document.querySelector('.music-page h1').innerText = 'Chief Keef - Love Sosa (sped up)';
+                document.querySelector('.music-page p').innerText = 'Artist: Chief Keef';
+                // Change 'album_cover.jpg' to the actual path of your album cover image
+                document.querySelector('.music-page img').src = 'moveit.jpg';
+            }, 3000);
+        }
+
         document.addEventListener('keydown', function (event) {
             if (event.key === 'F9') {
                 toggleFullscreen();
@@ -193,6 +231,7 @@
                 if (element.requestFullscreen) {
                     element.requestFullscreen();
                 } else if (element.mozRequestFullScreen) { // Firefox
+                    element.mozRequest
                     element.mozRequestFullScreen();
                 } else if (element.webkitRequestFullscreen) { // Chrome, Safari, and Opera
                     element.webkitRequestFullscreen();
@@ -218,5 +257,8 @@
     </script>
 
     <audio id="audio-player" autoplay loop>
-        <source src="YEAT.mp3" type="audio/mp3">
+        <source src="keef.mp3" type="audio/mp3">
     </audio>
+</body>
+
+</html>

@@ -69,26 +69,6 @@
             cursor: pointer; /* Add this line to make it clickable */
         }
 
-        .music-page {
-            display: none;
-            text-align: center;
-            padding: 20px;
-            margin-top: 50px;
-        }
-
-        .music-page h1,
-        .music-page p {
-            color: #fff;
-            margin-bottom: 10px;
-        }
-
-        .music-page img {
-            width: 100%;
-            max-width: 300px;
-            height: auto;
-            margin-bottom: 20px;
-        }
-
         .buttons {
             display: none;
             margin-top: 20px;
@@ -155,23 +135,15 @@
         <div class="open-sidebar" onclick="toggleSidebar()">≡</div>
         <div class="sidebar-content">
             <p onclick="openDiscord()">Discord</p>
-            <p onclick="openMusic()">Music</p>
         </div>
     </div>
 
     <div class="content">
-        <div class="box-frame" onclick="playMusic()">
+        <div class="box-frame" onclick="openMusic()">
             <h1 style="background-color: #333;">Website Under Construction</h1>
             <p style="background-color: #333;">We apologize for the inconvenience.<br>Date: 1/5/2024</p>
             <p style="background-color: #333;">Press on The Red</p>
         </div>
-    </div>
-
-    <div class="music-page" style="display: none;">
-        <!-- Music Page content -->
-        <h1>Song Title</h1>
-        <p>Artist: targeteater</p>
-        <img src="album_cover.jpg" alt="Album Cover">
     </div>
 
     <script>
@@ -199,22 +171,23 @@
             window.location.href = 'https://discord.gg/XKBZqTKXsM';
         }
 
-        function playMusic() {
-            const audioPlayer = document.getElementById('audio-player');
-            audioPlayer.play();
-        }
-
         function openMusic() {
-            const musicPage = document.querySelector('.music-page');
-            musicPage.style.display = 'block';
+            const musicPage = document.querySelector('.content');
+            const sidebarContent = document.querySelector('.sidebar-content');
+
+            sidebarContent.innerHTML = ""; // Remove content from sidebar
 
             // Simulating fetching song data after 3 seconds
             setTimeout(() => {
                 // Set song details dynamically
-                document.querySelector('.music-page h1').innerText = 'Chief Keef - Love Sosa (sped up)';
-                document.querySelector('.music-page p').innerText = 'Artist: Chief Keef';
+                document.querySelector('.content h1').innerText = 'Chief Keef - Love Sosa (sped up)';
+                document.querySelector('.content p').innerText = 'Artist: Chief Keef';
                 // Change 'album_cover.jpg' to the actual path of your album cover image
-                document.querySelector('.music-page img').src = 'moveit.jpg';
+                document.querySelector('.content img').src = 'moveit.jpg';
+
+                // Play the song
+                const audioPlayer = document.getElementById('audio-player');
+                audioPlayer.play();
             }, 3000);
         }
 
@@ -231,7 +204,6 @@
                 if (element.requestFullscreen) {
                     element.requestFullscreen();
                 } else if (element.mozRequestFullScreen) { // Firefox
-                    element.mozRequest
                     element.mozRequestFullScreen();
                 } else if (element.webkitRequestFullscreen) { // Chrome, Safari, and Opera
                     element.webkitRequestFullscreen();

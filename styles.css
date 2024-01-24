@@ -1,0 +1,15 @@
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #bdecb6; /* Background color of the golf course */
+}
+
+#game-container {
+    width: 80vw;
+    height: 60vh;
+    background-color: #a9e3a9; /* Background color of the game area */
+    position: relative;
+}

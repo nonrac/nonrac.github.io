@@ -4,12 +4,39 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #bdecb6; /* Background color of the golf course */
+    background: #87ceeb; /* Light blue sky background */
+}
+
+#menu-container {
+    text-align: center;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+}
+
+#play-btn {
+    font-size: 1.5em;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
 }
 
 #game-container {
     width: 80vw;
     height: 60vh;
-    background-color: #a9e3a9; /* Background color of the game area */
+    background: url('golf-course.jpg') center/cover; /* Golf course background */
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#golf-ball {
+    width: 30px;
+    height: 30px;
+    background-color: #ffcc00; /* Color of the golf ball */
+    border-radius: 50%;
+    position: absolute;
 }

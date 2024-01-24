@@ -3,19 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multiplayer Golf Game</title>
+    <title>Your Social Media Profile</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="menu-container">
-        <h1>Multiplayer Golf Game</h1>
-        <button id="play-btn">Play</button>
-    </div>
+    <!-- Background Image -->
+    <img alt="Background Image" fetchpriority="high" decoding="async" data-nimg="fill" class="block z-0 object-cover" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent" src="https://cdn.discordapp.com/attachments/1147935008087081031/1147949070904733706/healbanner_kZYBzsEn.gif">
 
-    <div id="game-container" style="display: none;">
-        <div id="golf-ball"></div>
-    </div>
-    
+    <header class="z-10 relative">
+        <div class="profile-header">
+            <img alt="Profile Image" fetchpriority="high" loading="eager" width="120" height="120" decoding="async" data-nimg="1" class="profile-image z-10" src="https://cdn.discordapp.com/attachments/1147935008087081031/1150472105348042782/healavatar_syeQ6Y.gif">
+            <div class="profile-info">
+                <h1 style="color: white;">Your Name</h1>
+                <img src="verified-badge.png" alt="Verified Badge" class="verified-badge">
+            </div>
+        </div>
+    </header>
+
+    <section class="relative z-50 mt-10 flex h-fit w-full flex-col items-center justify-start rounded-[57.5px] border-[1.5px] border-[#ffffff0d] bg-[#0000001a] p-[15px] backdrop-blur-[52px] md:mt-0 md:w-[500px]">
+        <div class="absolute -top-[60px] flex h-[120px] w-[120px] flex-col items-center justify-center overflow-hidden rounded-full bg-white bg-opacity-[0.05] shadow-md shadow-[#0003]">
+            <!-- The Profile Image should be visible here -->
+            <img alt="Profile Image" fetchpriority="high" loading="eager" width="120" height="120" decoding="async" data-nimg="1" class="object-cover z-10" style="color:transparent" src="https://cdn.discordapp.com/attachments/1147935008087081031/1150472105348042782/healavatar_syeQ6Y.gif">
+        </div>
+        <div class="mb-3 flex h-[49px] w-[95%] flex-row items-center justify-end gap-[10px] md:w-[90%]">
+            <div class="flex flex-row items-center gap-[10px] rounded-[48.6px] border-[1.5px] border-[#ffffff0d] bg-[#ffffff0d] p-2">
+                <img alt="Eye Icon" loading="lazy" width="16" height="20" decoding="async" data-nimg="1" class="" style="color: white;" srcset="/_next/image?url=%2Feye-icon.svg&amp;w=16&amp;q=75 1x, /_next/image?url=%2Feye-icon.svg&amp;w=32&amp;q=75 2x" src="/_next/image?url=%2Feye-icon.svg&amp;w=32&amp;q=75">
+                <p class="text-[16px] font-light text-[#d8d8d8]" style="color: white;">23</p>
+            </div>
+        </div>
+        <section class="flex-row flex h-fit w-full items-center justify-center gap-3">
+            <div class="w-[90%] items-center text-center flex line-clamp-1 flex-col justify-center">
+                <div class="relative flex h-fit w-fit flex-col items-center justify-center">
+                    <h1 class="z-10 line-clamp-1 w-full py-1 text-[28px] font-medium text-[--color]" style="--color:#FFF">ant</h1>
+                </div>
+            </div>
+        </section>
+        <section class="mb-2 mt-3 flex h-fit w-full flex-col items-center justify-center">
+            <h2 class="text-center text-[15px] tracking-[0.75px] text-[#d8d8d8bf]" style="color: white;">rotten</h2>
+        </section>
+        <section class="border-[1.5px] mt-[15px] h-full w-full rounded-[50px] border-[#ffffff0d] shadow-[0_0_10px_#0000001a] md:w-[465px]">
+            <div class="flex h-full w-full flex-col items-center justify-center rounded-[48.6px] bg-[#ffffff0d]">
+                <!-- Profile Section -->
+                <!-- ... Provided section goes here ... -->
+            </div>
+        </section>
+    </section>
+
     <script src="script.js"></script>
 </body>
 </html>

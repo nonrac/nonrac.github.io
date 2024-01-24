@@ -1,42 +1,35 @@
-body {
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: #87ceeb; /* Light blue sky background */
-}
+/* Existing CSS styles ... */
 
-#menu-container {
-    text-align: center;
-    color: #fff;
-    font-family: 'Arial', sans-serif;
-}
-
-#play-btn {
-    font-size: 1.5em;
-    padding: 10px 20px;
-    cursor: pointer;
-    background-color: #4caf50;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-}
-
-#game-container {
-    width: 80vw;
-    height: 60vh;
-    background: url('golf-course.jpg') center/cover; /* Golf course background */
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#golf-ball {
-    width: 30px;
-    height: 30px;
-    background-color: #ffcc00; /* Color of the golf ball */
+.profile-image {
     border-radius: 50%;
-    position: absolute;
+    margin-right: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Adjustments to the header styles */
+header {
+    background-color: #3498db; /* Blue header background color */
+    color: #fff;
+    text-align: center;
+    padding: 40px 20px; /* Increased padding for the header */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+h1 {
+    margin: 0;
+    font-size: 2.5em;
+    color: #fff;
+}
+
+/* Additional adjustments for a cleaner look */
+#social-media {
+    padding: 40px 20px;
+}
+
+/* Existing CSS styles ... */

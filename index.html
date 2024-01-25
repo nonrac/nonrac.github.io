@@ -1,104 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Custom Invite</title>
+    <title>Kirby</title>
+
+    <!-- Open Graph tags for Discord link preview customization -->
+    <meta property="og:title" content="Social Media">
+    <meta property="og:description" content="Made By swateam with <3 ">
+    <meta property="og:image"
+        content="https://cdn.discordapp.com/attachments/1199766902046732328/1199767212798529576/oSxOAQ7.gif?ex=65c3bd4a&is=65b1484a&hm=a85b00e092967cb506274f67764fcce79454e02c223cd831dda73ccca689fe5d&">
+
+    <link rel="stylesheet" href="styles.css">
     <style>
+        /* Your existing styles go here */
+
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f5f5f5;
             margin: 0;
             padding: 0;
+            overflow: hidden;
+        }
+
+        video {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -100;
+            transform: translateX(-50%) translateY(-50%);
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-header {
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 100vh;
         }
 
-        form {
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
+        .profile-image {
+            border-radius: 50%;
+            margin-right: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         }
 
-        label {
-            display: block;
-            margin-bottom: 10px;
+        .profile-info h1 {
+            font-size: 24px;
+            margin: 0;
         }
 
-        input {
-            width: 100%;
-            padding: 10px;
+        #social-media,
+        #discord-section {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            margin: 20px auto;
+            max-width: 600px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        h2 {
+            color: #343a40;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
             margin-bottom: 15px;
-            box-sizing: border-box;
         }
 
-        button {
-            background-color: #4CAF50;
+        .social-link,
+        .discord-link {
+            display: block;
+            padding: 15px;
+            background-color: #007BFF;
             color: #fff;
-            padding: 10px 20px;
             text-decoration: none;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
+            text-align: center;
+            border-radius: 8px;
+            transition: background-color 0.3s;
             cursor: pointer;
         }
 
-        button:hover {
-            background-color: #45a049;
+        .social-link:hover,
+        .discord-link:hover {
+            background-color: #0056b3;
+        }
+
+        #secure-check {
+            text-align: center;
+            margin-top: 50px;
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #secure-check img {
+            display: block;
+            margin: 0 auto;
+        }
+
+        #secure-check h2 {
+            color: #fff;
+            font-size: 24px;
+            margin-top: 15px;
+        }
+
+        /* Style for audio controls */
+        audio {
+            display: none;
         }
     </style>
 </head>
+
 <body>
-    <form>
-        <label for="discord-invite-code">Discord Invite Code:</label>
-        <input type="text" id="discord-invite-code" name="discord-invite-code" required>
-        
-        <label for="custom-url">Custom URL:</label>
-        <input type="text" id="custom-url" name="custom-url" required>
-        
-        <button type="button" id="create-custom-invite">Create Custom Invite</button>
-    </form>
+    <audio autoplay loop>
+        <source src="PLAYBOI CARTI - WOK (Prod.LHBeats).mp3" type="audio/mpeg">
+        Your browser does not support the audio tag.
+    </audio>
 
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <video autoplay loop muted>
+        <source src="PLAYBOI CARTI - WOK (Prod.LHBeats).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <header>
+        <div class="profile-header">
+            <img alt="Profile Image" fetchpriority="high" loading="eager" width="120" height="120" decoding="async"
+                data-nimg="1" class="profile-image"
+                src="https://cdn.discordapp.com/attachments/1147935008087081031/1150472105348042782/healavatar_syeQ6Y.gif">
+            <div class="profile-info">
+                <h1>Your Name</h1>
+            </div>
+        </div>
+    </header>
+
+    <section id="social-media">
+        <h2>Social Media Profiles</h2>
+        <ul>
+            <li><a href="https://www.instagram.com/ikoncus" class="social-link" target="_blank">Instagram</a></li>
+            <li><a href="https://www.tiktok.com/@resubscription" class="social-link" target="_blank">OG TikTok</a></li>
+            <li><a href="https://www.tiktok.com/@gangster.operator" class="social-link" target="_blank">Main TikTok</a></li>
+        </ul>
+    </section>
+
+    <section id="discord-section">
+        <h2>Join My Discord Server</h2>
+        <ul>
+            <li><a href="https://discord.gg/JRFQKdKWdD" class="discord-link" target="_blank">Discord Server</a></li>
+        </ul>
+    </section>
+
+    <!-- Secure Check Circle -->
+    <section id="secure-check">
+        <img src="dcaa7a90d62a19169bfa46c1c6625696.gif" alt="Secure Check Circle">
+        <h2>Check if Secure</h2>
+    </section>
+
+    <!-- Add this script just before the closing </body> tag -->
     <script>
-        $(document).ready(function () {
-            $('#create-custom-invite').on('click', createCustomInviteHandler);
-
-            function createCustomInviteHandler() {
-                const inviteCode = $('#discord-invite-code').val();
-                const customUrl = $('#custom-url').val();
-
-                // Validate input
-                if (!inviteCode || inviteCode.length < 1 || !customUrl || customUrl.length < 1) {
-                    alert('Please enter a valid Discord invite code and custom URL.');
-                    return;
-                }
-
-                // Create the custom invite link
-                const customInviteLink = 'https://spookyland.ca/' + customUrl;
-
-                // Save the custom invite link to local storage
-                saveCustomInviteLink(customUrl);
-
-                // Redirect to the new page with the custom invite link after 15 seconds
-                setTimeout(function () {
-                    window.location.href = 'https://discord.gg/k4MTPYvYE6';
-                }, 15000);
-            }
-
-            function saveCustomInviteLink(customUrl) {
-                // Retrieve existing custom invite links from local storage
-                const existingLinks = JSON.parse(localStorage.getItem('customInviteLinks')) || [];
-
-                // Save the new custom invite link
-                existingLinks.push(customUrl);
-                localStorage.setItem('customInviteLinks', JSON.stringify(existingLinks));
-            }
+        document.addEventListener("DOMContentLoaded", function () {
+            // Code to make the secure-check section appear after the page has loaded
+            var secureCheck = document.getElementById("secure-check");
+            secureCheck.style.display = "flex";
+            
+            // Code to hide the secure-check section after 8 seconds
+            setTimeout(function() {
+                secureCheck.style.display = "none";
+            }, 8000);
         });
     </script>
 </body>
-</html>
+

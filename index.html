@@ -1,23 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Social Media Profile</title>
+
+    <!-- Open Graph tags for Discord link preview customization -->
+    <meta property="og:title" content="Social Media Accounts">
+    <meta property="og:description" content="Check out my social media accounts!">
+    <meta property="og:image"
+        content="https://cdn.discordapp.com/attachments/1199766902046732328/1199767212798529576/oSxOAQ7.gif?ex=65c3bd4a&is=65b1484a&hm=a85b00e092967cb506274f67764fcce79454e02c223cd831dda73ccca689fe5d&">
+
     <link rel="stylesheet" href="styles.css">
     <style>
+        /* Your existing styles go here */
+
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            overflow: hidden;
+        }
+
+        video {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -100;
+            transform: translateX(-50%) translateY(-50%);
         }
 
         header {
-            background-color: #333;
+            background-color: rgba(0, 0, 0, 0.7);
             color: #fff;
             text-align: center;
             padding: 20px;
+            position: relative;
+            z-index: 1;
         }
 
         .profile-header {
@@ -29,6 +53,7 @@
         .profile-image {
             border-radius: 50%;
             margin-right: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         }
 
         .profile-info h1 {
@@ -36,19 +61,22 @@
             margin: 0;
         }
 
-        #social-media {
-            background-color: #fff;
-            padding: 20px;
+        #social-media,
+        #discord-section {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 30px;
             margin: 20px auto;
             max-width: 600px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
         }
 
         h2 {
-            color: #333;
-            font-size: 24px;
-            margin-bottom: 15px;
+            color: #343a40;
+            font-size: 28px;
+            margin-bottom: 20px;
         }
 
         ul {
@@ -58,32 +86,58 @@
         }
 
         li {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
-        .social-link, .discord-link {
+        .social-link,
+        .discord-link {
             display: block;
-            padding: 10px;
+            padding: 15px;
             background-color: #007BFF;
             color: #fff;
             text-decoration: none;
             text-align: center;
-            border-radius: 5px;
+            border-radius: 8px;
             transition: background-color 0.3s;
             cursor: pointer;
         }
 
-        .social-link:hover, .discord-link:hover {
+        .social-link:hover,
+        .discord-link:hover {
             background-color: #0056b3;
+        }
+
+        #secure-check {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        #secure-check img {
+            display: block;
+            margin: 0 auto;
+        }
+
+        #secure-check h2 {
+            color: #fff;
+            font-size: 24px;
+            margin-top: 15px;
         }
     </style>
 </head>
+
 <body>
+    <video autoplay loop muted>
+        <source src="Background.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
     <header>
         <div class="profile-header">
-            <img alt="Profile Image" fetchpriority="high" loading="eager" width="120" height="120" decoding="async" data-nimg="1" class="profile-image" src="https://cdn.discordapp.com/attachments/1147935008087081031/1150472105348042782/healavatar_syeQ6Y.gif">
+            <img alt="Profile Image" fetchpriority="high" loading="eager" width="120" height="120" decoding="async"
+                data-nimg="1" class="profile-image"
+                src="https://cdn.discordapp.com/attachments/1147935008087081031/1150472105348042782/healavatar_syeQ6Y.gif">
             <div class="profile-info">
-                <h1>Kirby</h1>
+                <h1>Your Name</h1>
             </div>
         </div>
     </header>
@@ -91,14 +145,27 @@
     <section id="social-media">
         <h2>Social Media Profiles</h2>
         <ul>
-            <li><a href="https://www.instagram.com/your-profile" class="social-link" target="_blank">Instagram</a></li>
-            <li><a href="https://www.youtube.com/@Kirbylols/featured" class="social-link" target="_blank">YouTube</a></li>
-            <li><a href="https://discord.gg/your-discord-invite-link" class="discord-link" target="_blank">Join Discord Server</a></li>
-            <li><a href="https://www.tiktok.com/@gangster.operator" class="social-link" target="_blank">Main TikTok</a></li>
-            <li><a href="https://www.tiktok.com/@resubscription" class="social-link" target="_blank">Rare Username TikTok</a></li>
+            <li><a href="https://www.instagram.com/ikoncus" class="social-link" target="_blank">Instagram</a></li>
+            <li><a href="https://www.tiktok.com/@resubscription" class="social-link" target="_blank">OG TikTok</a></li>
+            <li><a href="https://www.tiktok.com/@gangster.operator" class="social-link" target="_blank">Main TikTok</a>
+            </li>
         </ul>
+    </section>
+
+    <section id="discord-section">
+        <h2>Join My Discord Server</h2>
+        <ul>
+            <li><a href="https://discord.gg/JRFQKdKWdD" class="discord-link" target="_blank">Discord Server</a></li>
+        </ul>
+    </section>
+
+    <!-- Secure Check Circle -->
+    <section id="secure-check">
+        <img src="dcaa7a90d62a19169bfa46c1c6625696.gif" alt="Secure Check Circle">
+        <h2>Check if Secure</h2>
     </section>
 
     <script src="script.js"></script>
 </body>
+
 </html>

@@ -1,35 +1,117 @@
-/* Existing CSS styles ... */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+video {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+header {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .profile-image {
     border-radius: 50%;
     margin-right: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
-.profile-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-/* Adjustments to the header styles */
-header {
-    background-color: #3498db; /* Blue header background color */
-    color: #fff;
-    text-align: center;
-    padding: 40px 20px; /* Increased padding for the header */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-}
-
-h1 {
+.profile-info h1 {
+    font-size: 24px;
     margin: 0;
-    font-size: 2.5em;
+}
+
+#social-media,
+#discord-section {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 30px;
+    margin: 20px auto;
+    max-width: 600px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+}
+
+h2 {
+    color: #343a40;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    margin-bottom: 15px;
+}
+
+.social-link,
+.discord-link {
+    display: block;
+    padding: 15px;
+    background-color: #007BFF;
     color: #fff;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+    cursor: pointer;
 }
 
-/* Additional adjustments for a cleaner look */
-#social-media {
-    padding: 40px 20px;
+.social-link:hover,
+.discord-link:hover {
+    background-color: #0056b3;
 }
 
-/* Existing CSS styles ... */
+#secure-check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#secure-check img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+#secure-check h2 {
+    margin-top: 20px;
+    color: #fff;
+    font-size: 20px;
+}

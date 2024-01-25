@@ -148,6 +148,7 @@
                 src="https://cdn.discordapp.com/attachments/1147935008087081031/1150472105348042782/healavatar_syeQ6Y.gif">
             <div class="profile-info">
                 <h1>Your Name</h1>
+                <p id="discord-status">Loading...</p>
             </div>
         </div>
     </header>
@@ -157,8 +158,7 @@
         <ul>
             <li><a href="https://www.instagram.com/ikoncus" class="social-link" target="_blank">Instagram</a></li>
             <li><a href="https://www.tiktok.com/@resubscription" class="social-link" target="_blank">OG TikTok</a></li>
-            <li><a href="https://www.tiktok.com/@gangster.operator" class="social-link" target="_blank">Main TikTok</a>
-            </li>
+            <li><a href="https://www.tiktok.com/@gangster.operator" class="social-link" target="_blank">Main TikTok</a></li>
         </ul>
     </section>
 
@@ -175,7 +175,38 @@
         <h2>Check if Secure</h2>
     </section>
 
-    <script src="script.js"></script>
+    <script>
+        // Fetch Discord status using the bot token
+        const botToken = 'MTE4NzU2NDQ3ODU2NTQ1MzkyNg.GS_KO4.hHBfdeETF6djEhSDt_uCT0B3xxnymTx-aqEW2E'; // Replace with your bot token
+        const discordStatusElement = document.getElementById('discord-status');
+
+        async function fetchDiscordStatus() {
+            try {
+                const response = await fetch(`https://discord.com/api/v9/users/@me`, {
+                    headers: {
+                        Authorization: `Bot ${botToken}`,
+                    },
+                });
+
+                const data = await response.json();
+
+                if (data.status === 'online') {
+                    discordStatusElement.textContent = 'Online on Discord';
+                } else {
+                    discordStatusElement.textContent = 'Offline on Discord';
+                }
+            } catch (error) {
+                console.error('Error fetching Discord status:',
+                error);
+                discordStatusElement.textContent = 'Error fetching Discord status';
+            }
+        }
+
+        // Fetch Discord status on page load
+        fetchDiscordStatus();
+    </script>
+
+    <a href="/logout">Logout</a>
 </body>
 
 </html>

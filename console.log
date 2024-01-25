@@ -1,0 +1,4 @@
+function createCustomInviteHandler() {
+    console.log('Create Custom Invite button clicked');  // Add this line
+    // Rest of the function code...
+}

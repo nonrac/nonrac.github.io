@@ -130,6 +130,7 @@
     </style>
 </head>
 
+
 <body>
     <audio autoplay loop>
         <source src="PLAYBOI CARTI - WOK (Prod.LHBeats).mp3" type="audio/mpeg">
@@ -145,10 +146,9 @@
         <div class="profile-header">
             <img alt="Profile Image" fetchpriority="high" loading="eager" width="120" height="120" decoding="async"
                 data-nimg="1" class="profile-image"
-                src="https://cdn.discordapp.com/attachments/1147935008087081031/1150472105348042782/healavatar_syeQ6Y.gif">
+                src="https://cdn.discordapp.com/attachments/1198694298384859297/1200136718716780544/DL5bqFJ.jpeg?ex=65c5156b&is=65b2a06b&hm=2addf9aabf840b0d2131f912a2ae224dba5e2c0d3b6d54e817adb8bbf999618f&">
             <div class="profile-info">
-                <h1>Your Name</h1>
-                <p id="discord-status">Loading...</p>
+                <h1>Kurby</h1>
             </div>
         </div>
     </header>
@@ -170,43 +170,19 @@
     </section>
 
     <!-- Secure Check Circle -->
-    <section id="secure-check">
+    <section id="secure-check" style="display: none;">
         <img src="dcaa7a90d62a19169bfa46c1c6625696.gif" alt="Secure Check Circle">
         <h2>Check if Secure</h2>
     </section>
 
+    <!-- Add this script just before the closing </body> tag -->
     <script>
-        // Fetch Discord status using the bot token
-        const botToken = 'MTE4NzU2NDQ3ODU2NTQ1MzkyNg.GS_KO4.hHBfdeETF6djEhSDt_uCT0B3xxnymTx-aqEW2E'; // Replace with your bot token
-        const discordStatusElement = document.getElementById('discord-status');
-
-        async function fetchDiscordStatus() {
-            try {
-                const response = await fetch(`https://discord.com/api/v9/users/@me`, {
-                    headers: {
-                        Authorization: `Bot ${botToken}`,
-                    },
-                });
-
-                const data = await response.json();
-
-                if (data.status === 'online') {
-                    discordStatusElement.textContent = 'Online on Discord';
-                } else {
-                    discordStatusElement.textContent = 'Offline on Discord';
-                }
-            } catch (error) {
-                console.error('Error fetching Discord status:',
-                error);
-                discordStatusElement.textContent = 'Error fetching Discord status';
-            }
-        }
-
-        // Fetch Discord status on page load
-        fetchDiscordStatus();
+        document.addEventListener("DOMContentLoaded", function () {
+            // Code to make the secure-check section appear after the page has loaded
+            var secureCheck = document.getElementById("secure-check");
+            secureCheck.style.display = "block";
+        });
     </script>
-
-    <a href="/logout">Logout</a>
 </body>
 
 </html>

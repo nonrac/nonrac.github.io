@@ -3,14 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Website Title</title>
+    <title>Spookyland</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div id="overlay">
+        <div id="overlay-text">Click to Enter</div>
+    </div>
+
+    <audio id="background-music" autoplay loop>
+        <source src="music.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
     <header>
         <nav>
             <div class="container">
-                <h1>Your Website Name</h1>
+                <h1 id="website-title"></h1>
                 <ul>
                     <li><a href="#">Home</a></li>
                     <li><a href="#">About</a></li>
@@ -21,7 +30,7 @@
         </nav>
         <div class="hero">
             <div class="container">
-                <h2>Welcome to Your Website</h2>
+                <h2>Welcome to Spookyland</h2>
                 <p>Your tagline goes here.</p>
             </div>
         </div>
@@ -38,8 +47,32 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Your Website. All rights reserved.</p>
+            <p>&copy; 2024 Spookyland. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        // Overlay click event to start the website and remove overlay
+        document.getElementById('overlay').addEventListener('click', function() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('background-music').play();
+            typeEffect();
+        });
+
+        // Website title typing effect
+        const titleText = "Spookyland";
+        let index = 0;
+        let direction = 1;
+
+        function typeEffect() {
+            setInterval(function() {
+                document.getElementById('website-title').innerText = titleText.substring(0, index);
+                index += direction;
+                if (index === titleText.length + 1 || index === -1) {
+                    direction *= -1;
+                }
+            }, 200);
+        }
+    </script>
 </body>
 </html>

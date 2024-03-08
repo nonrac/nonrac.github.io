@@ -27,13 +27,21 @@
         const app = firebase.initializeApp(firebaseConfig);
 
         async function uploadImage() {
-            const fileInput = document.getElementById('fileInput');
-            const file = fileInput.files[0];
-            const storageRef = firebase.storage().ref();
-            const imageRef = storageRef.child(file.name);
-            await imageRef.put(file);
-            const imageURL = await imageRef.getDownloadURL();
-            document.getElementById('result').innerHTML = `<a href="${imageURL}" target="_blank">${imageURL}</a>`;
+            try {
+                const fileInput = document.getElementById('fileInput');
+                const file = fileInput.files[0];
+                if (!file) {
+                    throw new Error("No file selected");
+                }
+                const storageRef = firebase.storage().ref();
+                const fileName = file.name.toLowerCase().replace(/\s+/g, '_');
+                const imageRef = storageRef.child(fileName);
+                await imageRef.put(file);
+                const imageURL = await imageRef.getDownloadURL();
+                document.getElementById('result').innerHTML = `<a href="${imageURL}" target="_blank">${imageURL}</a>`;
+            } catch (error) {
+                console.error("Error uploading image:", error.message);
+            }
         }
     </script>
 </body>

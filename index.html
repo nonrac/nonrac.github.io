@@ -3,46 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Uploader</title>
+    <title>Fortnite Leaks</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        #twitter-feed {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    </style>
 </head>
 <body>
-    <h1>Upload an Image</h1>
-    <input type="file" id="fileInput">
-    <button onclick="uploadImage()">Upload</button>
-    <div id="result"></div>
-
-    <script src="https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.4.0/firebase-storage.js"></script>
-    <script>
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyCdMyd6eEhAH2y05D-14JkmTYH-TXLJOMo",
-            authDomain: "big-pact-384923.firebaseapp.com",
-            projectId: "big-pact-384923",
-            storageBucket: "big-pact-384923.appspot.com",
-            messagingSenderId: "488771674555",
-            appId: "1:488771674555:web:ae15939f4fb967abc5249e"
-        };
-        // Initialize Firebase
-        const app = firebase.initializeApp(firebaseConfig);
-
-        async function uploadImage() {
-            try {
-                const fileInput = document.getElementById('fileInput');
-                const file = fileInput.files[0];
-                if (!file) {
-                    throw new Error("No file selected");
-                }
-                const storageRef = firebase.storage().ref();
-                const fileName = file.name.toLowerCase().replace(/\s+/g, '_');
-                const imageRef = storageRef.child(fileName);
-                await imageRef.put(file);
-                const imageURL = await imageRef.getDownloadURL();
-                document.getElementById('result').innerHTML = `<a href="${imageURL}" target="_blank">${imageURL}</a>`;
-            } catch (error) {
-                console.error("Error uploading image:", error.message);
-            }
-        }
-    </script>
+    <header>
+        <h1>Fortnite Leaks</h1>
+    </header>
+    <div id="twitter-feed">
+        <a class="twitter-timeline" data-width="600" data-height="800" href="https://twitter.com/HYPEX?ref_src=twsrc%5Etfw">Tweets by HYPEX</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
 </body>
 </html>

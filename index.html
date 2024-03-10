@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="website-title">https://www.api-backend.info/</title>
+    <title id="website-title">api-backend.info/</title>
     <link rel="icon" href="https://th.bing.com/th/id/R.fb375a32cff7925864ebb03b020add0d?rik=NUZG4TQdJE484A&pid=ImgRaw&r=0">
     <style>
         body, html {
@@ -13,20 +13,6 @@
             background-color: #f0f0f0;
             overflow: hidden;
         }
-        .fullscreen {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            color: #fff;
-            font-size: 24px;
-            cursor: pointer;
-        }
         .container {
             max-width: 800px;
             margin: 20px auto;
@@ -34,7 +20,6 @@
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 5px;
-            display: none;
         }
         img {
             max-width: 100%;
@@ -53,10 +38,6 @@
 </head>
 <body>
 
-<div class="fullscreen" onclick="start()">
-    <div id="click-to-enter">Click to enter...</div>
-</div>
-
 <div class="container" id="container">
     <img src="YOUR_DISCORD_IMAGE_URL_HERE" alt="Person Image">
     <h1>John Doe</h1>
@@ -70,21 +51,21 @@
 <script>
     var websiteTitle = "https://www.api-backend.info/";
 
-    function start() {
-        var overlay = document.querySelector('.fullscreen');
+    window.onload = function() {
         var container = document.getElementById('container');
-        var clickToEnter = document.getElementById('click-to-enter');
-        
-        if (websiteTitle.length > 0) {
-            websiteTitle = websiteTitle.substring(0, websiteTitle.length - 1);
-            document.title = websiteTitle;
-        } else {
-            overlay.style.display = 'none';
-            container.style.display = 'block';
-            var audio = document.getElementById('audio');
-            audio.play();
-        }
-    }
+        container.style.display = 'block';
+        var audio = document.getElementById('audio');
+        audio.play();
+
+        setInterval(function() {
+            if (websiteTitle.length > 0) {
+                websiteTitle = websiteTitle.substring(0, websiteTitle.length - 1);
+                document.title = websiteTitle;
+            } else {
+                websiteTitle = "api-backend.info";
+            }
+        }, 1000);
+    };
 </script>
 
 </body>

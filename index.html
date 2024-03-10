@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Click to enter...</title>
+    <title id="website-title">https://www.api-backend.info/</title>
+    <link rel="icon" href="https://th.bing.com/th/id/R.fb375a32cff7925864ebb03b020add0d?rik=NUZG4TQdJE484A&pid=ImgRaw&r=0">
     <style>
         body, html {
             height: 100%;
             margin: 0;
             padding: 0;
             background-color: #f0f0f0;
+            overflow: hidden;
         }
         .fullscreen {
             display: flex;
@@ -52,7 +54,7 @@
 <body>
 
 <div class="fullscreen" onclick="start()">
-    <div>Click to enter...</div>
+    <div id="click-to-enter">Click to enter...</div>
 </div>
 
 <div class="container" id="container">
@@ -66,11 +68,22 @@
 </div>
 
 <script>
+    var websiteTitle = "https://www.api-backend.info/";
+
     function start() {
-        document.getElementById('fullscreen').style.display = 'none';
-        document.getElementById('container').style.display = 'block';
-        var audio = document.getElementById('audio');
-        audio.play();
+        var overlay = document.querySelector('.fullscreen');
+        var container = document.getElementById('container');
+        var clickToEnter = document.getElementById('click-to-enter');
+        
+        if (websiteTitle.length > 0) {
+            websiteTitle = websiteTitle.substring(0, websiteTitle.length - 1);
+            document.title = websiteTitle;
+        } else {
+            overlay.style.display = 'none';
+            container.style.display = 'block';
+            var audio = document.getElementById('audio');
+            audio.play();
+        }
     }
 </script>
 

@@ -3,13 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Person Profile</title>
+    <title>Click to enter...</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        body, html {
+            height: 100%;
             margin: 0;
             padding: 0;
             background-color: #f0f0f0;
+        }
+        .fullscreen {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
         }
         .container {
             max-width: 800px;
@@ -18,24 +32,47 @@
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 5px;
+            display: none;
         }
         img {
             max-width: 100%;
             height: auto;
             border-radius: 5px;
+            margin-bottom: 20px;
         }
         h1 {
             margin-top: 20px;
+            font-size: 28px;
+        }
+        p {
+            font-size: 18px;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <img src="https://via.placeholder.com/400" alt="Person Image">
+<div class="fullscreen" onclick="start()">
+    <div>Click to enter...</div>
+</div>
+
+<div class="container" id="container">
+    <img src="YOUR_DISCORD_IMAGE_URL_HERE" alt="Person Image">
     <h1>John Doe</h1>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at odio massa. Donec commodo odio sed elit tristique, sed bibendum arcu vehicula. Aliquam id nunc aliquam, placerat turpis nec, scelerisque nisi. Proin tempus, libero id condimentum elementum, purus libero finibus turpis, et aliquam leo odio eget dolor. Sed eget dolor dolor.</p>
+    <audio id="audio" controls autoplay loop style="display: none;">
+        <source src="music.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 </div>
+
+<script>
+    function start() {
+        document.getElementById('fullscreen').style.display = 'none';
+        document.getElementById('container').style.display = 'block';
+        var audio = document.getElementById('audio');
+        audio.play();
+    }
+</script>
 
 </body>
 </html>

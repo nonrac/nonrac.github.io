@@ -8,6 +8,8 @@ function showTrucks() {
   document.getElementById('carImage').classList.add('hidden');
   document.getElementById('truckImage').classList.remove('hidden');
   document.getElementById('searchInput').classList.remove('hidden');
+  // Open the Shutterstock link in a new tab
+  window.open('https://www.shutterstock.com/search/truck-fleet', '_blank');
 }
 
 function search() {

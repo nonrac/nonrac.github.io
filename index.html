@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Biolinks</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+        }
+        .fullscreen-container {
+            position: relative;
+            height: 100%;
+            overflow: hidden;
+        }
+        .fullscreen-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        #click-to-enter {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            cursor: pointer;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 2s ease-in-out forwards;
+            z-index: 1;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        #music-player {
+            display: none;
+        }
+        #lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        .line {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.5);
+            width: 2px;
+            height: 100%;
+            transition: height 0.5s ease-out;
+        }
+        .horizontal-line {
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+        }
+        .vertical-line {
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .center-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 5rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="fullscreen-container">
+        <img src="https://wallpapercave.com/wp/wp2757951.gif" alt="GIF Background">
+        <div id="click-to-enter">
+            Click To Enter
+        </div>
+        <div id="lines">
+            <div class="line horizontal-line"></div>
+            <div class="line vertical-line"></div>
+        </div>
+        <div class="center-text" id="website-name">
+            |      
+        </div>
+    </div>
+    <audio id="music-player" autoplay loop>
+        <source src="your-music-file.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const clickToEnter = document.getElementById('click-to-enter');
+            const musicPlayer = document.getElementById('music-player');
+            const lines = document.getElementById('lines');
+            const websiteName = document.getElementById('website-name');
+
+            clickToEnter.addEventListener('click', () => {
+                clickToEnter.style.display = 'none'; // Hide the click to enter text
+                musicPlayer.style.display = 'block'; // Show the music player
+            });
+
+            lines.addEventListener('mouseover', () => {
+                document.querySelectorAll('.line').forEach(line => {
+                    line.style.height = '0';
+                    setTimeout(() => {
+                        line.style.height = '100%';
+                    }, 50);
+                });
+            });
+
+            lines.addEventListener('mouseout', () => {
+                setTimeout(() => {
+                    document.querySelectorAll('.line').forEach(line => {
+                        line.style.height = '0';
+                    });
+                }, 1000);
+            });
+
+            document.addEventListener('visibilitychange', () => {
+                if (document.visibilityState === 'hidden') {
+                    websiteName.innerText = 'CO<E BACK'; // Change website name when user leaves the website
+                } else {
+                    websiteName.innerText = 'YUH'; // Change website name when user returns to the website
+                }
+            });
+        });
+    </script>
+</body>
+</html>

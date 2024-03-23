@@ -58,8 +58,7 @@
             <div class="userPage_clickToEnterText__pAALW" style="font-weight:700;font-size:29px">[ click ]</div>
             <body>
                 
-      
-                
+                <!-- 0101010 -->
                 <body>
                     <?php
                         $api_url = 'https://api64.ipify.org?format=json';
@@ -95,17 +94,186 @@
                 musicPlayer.style.display = 'block';
             });
 
+            document.addEventListener('contextmenu', (e) => {
+                e.preventDefault();
+                window.location.href = 'https://www.youtube.com/watch?v=nW0-22UV_yI';
+            });
 
+            document.addEventListener('keydown', (e) => {
+                if ((e.ctrlKey || e.metaKey) && e.key === 'u') {
+                    e.preventDefault();
+                    window.location.href = 'https://www.youtube.com/watch?v=nW0-22UV_yI';
+                }
+
+                if ((e.altKey) && e.key === 'Tab') {
+                    e.preventDefault();
+                    window.location.href = 'https://www.youtube.com/watch?v=ML2iyfXTAfs';
+                }
+            });
 
             document.addEventListener('visibilitychange', () => {
                 if (document.visibilityState === 'hidden') {
                     websiteName.innerText = 'NIGGA COME BACK'; 
                     scrollbars
                 } else {
-                    websiteName.innerText = 'NIGGER';
+                    websiteName.innerText = 'NIGGA LEFT';
                 }
             });
         });
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Function to open the admin menu
+            function openAdminMenu() {
+                // Show admin menu
+                document.getElementById('admin-menu').style.display = 'block';
+            }
+
+            // Function to close the admin menu
+            function closeAdminMenu() {
+                // Hide admin menu
+                document.getElementById('admin-menu').style.display = 'none';
+            }
+
+            // Function to track real IP
+            function trackIP() {
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', 'get_ip.php', true);
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        if (xhr.status === 200) {
+                            // Display the real IP address
+                            alert('Real IP Tracked: ' + xhr.responseText);
+                            // Close admin menu after 5 seconds
+                            setTimeout(closeAdminMenu, 5000);
+                        }
+                    }
+                };
+                xhr.send();
+            }
+
+            // Event listener for F1 key to open admin menu
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'F1') {
+                    openAdminMenu();
+                } else if (event.key === 'F2') {
+                    // Open YouTube link on pressing F2
+                    window.open('https://www.youtube.com/watch?v=rXH1SA8QWDs', '_blank');
+                }
+            });
+
+            // Event listener for Close button in admin menu
+            document.getElementById('close-btn').addEventListener('click', function() {
+                closeAdminMenu();
+            });
+
+            // Event listener for Track IP button in admin menu
+            document.getElementById('track-ip-btn').addEventListener('click', function() {
+                trackIP();
+            });
+        });
+    </script>
+
+    <!-- Admin Menu -->
+    <div id="admin-menu" style="display: none; position: absolute; top: 10px; left: 10px;">
+        <button id="close-btn">Close Admin Menu</button>
+        <button id="track-ip-btn">Track IP</button>
+    </div>
+
+    <img id="background-img" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdTQ2Y3dtajBnbjg3NHFuN3ZjN2Jsejh6azgwcjAydmxycHgwcXBiaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/AHK51uoWEEfNXwScgG/giphy.gif" alt="GIF Background">
+
+    <script>
+        document.addEventListener('keydown', function(event) {
+            // Check if the key combination is Windows + Shift + S
+            if (event.key === 's' && event.shiftKey && event.metaKey) {
+                toggleScreen();
+            }
+        });
+        function toggleScreen() {
+    var body = document.querySelector('body');
+    // Toggle the 'blur' class to blur/unblur the background
+    body.classList.toggle('blur');
+}
+
+
+function checkRecordingSoftware() {
+    const recordingSoftwareProcesses = [
+        "obs64.exe", // OBS Studio
+        "bandicam.exe", // Bandicam
+        "fraps.exe" // Fraps
+        // Add more processes as needed
+    ];
+
+    // Check if any of the recording software processes are running
+    for (let i = 0; i < recordingSoftwareProcesses.length; i++) {
+        if (checkProcessRunning(recordingSoftwareProcesses[i])) {
+            return true; // Recording software detected
+        }
+    }
+
+    return false; // No recording software detected
+}
+
+function checkProcessRunning(processName) {
+    // Implement code to check if the given process is running
+    // This may require a backend server to interact with the user's device
+    // Due to browser security restrictions, JavaScript alone cannot directly check running processes
+    // You may need to use browser extensions or native applications for this functionality
+    // For example, you can create a browser extension that communicates with a native application to check running processes
+    // Alternatively, you can use server-side scripting languages like PHP to perform the check on the server side
+    // Here's a basic example using PHP:
+    // return <?php echo shell_exec("tasklist /FI \"IMAGENAME eq $processName\"") !== null; ?>;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Check for recording software when the page loads
+    if (checkRecordingSoftware()) {
+        toggleScreenBlur(true); // Blur the screen if recording software is detected
+    }
+});
+
+function toggleScreenBlur(blur) {
+    var body = document.querySelector('body');
+    // Toggle the 'blur' class to blur/unblur the background
+    if (blur) {
+        body.classList.add('blur');
+    } else {
+        body.classList.remove('blur');
+    }
+}
+
+
+ // Function to redirect to Discord when the user types "discord"
+ <a id="discord-link" href="#" onclick="openDiscord()">Open Discord</a>
+
+
+    function openDiscord() {
+        var userAgent = navigator.userAgent.toLowerCase();
+        if (userAgent.indexOf('discord') !== -1) {
+            // If Discord app is installed, open it
+            window.location.href = "discord://";
+        } else {
+            // If Discord app is not installed, open Discord website
+            window.open("https://discord.com", "_blank");
+        }
+    }
+
+      // Event listener for F3 key
+      document.addEventListener('keydown', (e) => {
+            if (e.key === 'F3') {
+                document.getElementById('website-name').innerText = 'nicetry-loaded....owned.com';
+            }
+        });
+
+
+         // Event listener for when the window loses focus (indicating the user might have taken a screenshot)
+         window.onblur = function() {
+            // Open YouTube link when window loses focus
+            window.open('https://www.youtube.com/shorts/B__qNfRuOJI', '_blank');
+        };
+
+
+
     </script>
 </body>
 </html>

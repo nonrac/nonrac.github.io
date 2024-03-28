@@ -1,279 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>f</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Cache-control" content="public">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!-- Preload fonts -->
+    <link rel="preload" href="WOFF/FreeSerif-YO4a.woff" as="font" type="font/woff">
+    <link rel="preload" href="WOFF/jackeyfont.woff" as="font" type="font/woff">
+    <!-- Preload and link stylesheets -->
+    <link rel="preload" href="css/index.css" as="style">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="preload" href="css/crt.css" as="style">
+    <link rel="stylesheet" href="css/crt.css">
+    <link rel="preload" href="css/loading.css" as="style">
+    <link rel="stylesheet" href="css/loading.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.html" type="image/x-icon">
+
+    <!-- Page title and meta tags -->
+    <title>api-backend.info</title>
+    <meta name="theme-color" content="#000">
+    <meta property="og:title" content="api-backend.info">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="IDK WHUT TO PUT HERE">
+
     <style>
-        body, html {
-            height: 100%;
-            margin: 0;
-            overflow: hidden;
-        }
-        .fullscreen-container {
-            position: relative;
-            height: 100%;
-            overflow: hidden;
-        }
-        .fullscreen-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        #click-to-enter {
-            position: absolute;
+        /* Center text */
+        .centered-text {
+            position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 3rem;
-            cursor: pointer;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            animation: fadeIn 2s ease-in-out forwards;
-            z-index: 1;
-        }
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-        #music-player {
-            display: none;
-        }
-        .center-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 5rem;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-size: 24px;
+            color: #fff;
+            z-index: 9999; /* Ensure it appears above other elements */
         }
     </style>
-</head>
-<body>
-     <div class="fullscreen-container">
-        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdTQ2Y3dtajBnbjg3NHFuN3ZjN2Jsejh6azgwcjAydmxycHgwcXBiaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/AHK51uoWEEfNXwScgG/giphy.gif" alt="GIF Background">
-        <div id="click-to-enter">
-            <div class="userPage_clickToEnterText__pAALW" style="font-weight:700;font-size:29px">[ click ]</div>
-            <body>
-                
-                <!-- 0101010 -->
-                <body>
-                    <?php
-                        $api_url = 'https://api64.ipify.org?format=json';
-                        $response = file_get_contents($api_url);
-                        $data = json_decode($response, true);
-                        $user_ip = $data['ip'];
-                    ?>
-                </body>
-                </html>
-                
-                
 
-        </div>
-        <div class="center-text" id="website-name">
-            
-        </div>
-
-    </div>
-    <audio id="music-player" loop>
-        <source src="your-music-file.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-
+    <!-- JavaScript to show/hide text and loading screen -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const clickToEnter = document.getElementById('click-to-enter');
-            const musicPlayer = document.getElementById('music-player');
-            const websiteName = document.getElementById('website-name');
-
-            clickToEnter.addEventListener('click', () => {
-                clickToEnter.style.display = 'none';
-                musicPlayer.play();
-                musicPlayer.style.display = 'block';
-            });
-
-            document.addEventListener('contextmenu', (e) => {
-                e.preventDefault();
-                window.location.href = 'https://www.youtube.com/watch?v=nW0-22UV_yI';
-            });
-
-            document.addEventListener('keydown', (e) => {
-                if ((e.ctrlKey || e.metaKey) && e.key === 'u') {
-                    e.preventDefault();
-                    window.location.href = 'https://www.youtube.com/watch?v=nW0-22UV_yI';
-                }
-
-                if ((e.altKey) && e.key === 'Tab') {
-                    e.preventDefault();
-                    window.location.href = 'https://www.youtube.com/watch?v=ML2iyfXTAfs';
-                }
-            });
-
-            document.addEventListener('visibilitychange', () => {
-                if (document.visibilityState === 'hidden') {
-                    websiteName.innerText = 'NIGGA COME BACK'; 
-                    scrollbars
-                } else {
-                    websiteName.innerText = 'NIGGA LEFT';
-                }
-            });
-        });
-
-
         document.addEventListener('DOMContentLoaded', function() {
-            // Function to open the admin menu
-            function openAdminMenu() {
-                // Show admin menu
-                document.getElementById('admin-menu').style.display = 'block';
-            }
-
-            // Function to close the admin menu
-            function closeAdminMenu() {
-                // Hide admin menu
-                document.getElementById('admin-menu').style.display = 'none';
-            }
-
-            // Function to track real IP
-            function trackIP() {
-                var xhr = new XMLHttpRequest();
-                xhr.open('GET', 'get_ip.php', true);
-                xhr.onreadystatechange = function() {
-                    if (xhr.readyState === XMLHttpRequest.DONE) {
-                        if (xhr.status === 200) {
-                            // Display the real IP address
-                            alert('Real IP Tracked: ' + xhr.responseText);
-                            // Close admin menu after 5 seconds
-                            setTimeout(closeAdminMenu, 5000);
-                        }
-                    }
-                };
-                xhr.send();
-            }
-
-            // Event listener for F1 key to open admin menu
-            document.addEventListener('keydown', function(event) {
-                if (event.key === 'F1') {
-                    openAdminMenu();
-                } else if (event.key === 'F2') {
-                    // Open YouTube link on pressing F2
-                    window.open('https://www.youtube.com/watch?v=rXH1SA8QWDs', '_blank');
-                }
-            });
-
-            // Event listener for Close button in admin menu
-            document.getElementById('close-btn').addEventListener('click', function() {
-                closeAdminMenu();
-            });
-
-            // Event listener for Track IP button in admin menu
-            document.getElementById('track-ip-btn').addEventListener('click', function() {
-                trackIP();
-            });
+            // Show the text
+            document.getElementById('centeredText').style.display = 'block';
+            
+            // Show the loading screen
+            document.getElementById('loadingScreen').style.display = 'block';
+            
+            // Hide the text and loading screen after 5 seconds
+            setTimeout(function() {
+                document.getElementById('centeredText').style.display = 'none';
+                document.getElementById('loadingScreen').style.display = 'none';
+            }, 5000);
         });
     </script>
+</head>
 
-    <!-- Admin Menu -->
-    <div id="admin-menu" style="display: none; position: absolute; top: 10px; left: 10px;">
-        <button id="close-btn">Close Admin Menu</button>
-        <button id="track-ip-btn">Track IP</button>
+<body>
+    <!-- Text in the center of the screen -->
+    <div id="centeredText" class="centered-text">
+        a p i - b a c k e n d . i n f o . c o m
     </div>
 
-    <img id="background-img" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdTQ2Y3dtajBnbjg3NHFuN3ZjN2Jsejh6azgwcjAydmxycHgwcXBiaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/AHK51uoWEEfNXwScgG/giphy.gif" alt="GIF Background">
-
-    <script>
-        document.addEventListener('keydown', function(event) {
-            // Check if the key combination is Windows + Shift + S
-            if (event.key === 's' && event.shiftKey && event.metaKey) {
-                toggleScreen();
-            }
-        });
-        function toggleScreen() {
-    var body = document.querySelector('body');
-    // Toggle the 'blur' class to blur/unblur the background
-    body.classList.toggle('blur');
-}
-
-
-function checkRecordingSoftware() {
-    const recordingSoftwareProcesses = [
-        "obs64.exe", // OBS Studio
-        "bandicam.exe", // Bandicam
-        "fraps.exe" // Fraps
-        // Add more processes as needed
-    ];
-
-    // Check if any of the recording software processes are running
-    for (let i = 0; i < recordingSoftwareProcesses.length; i++) {
-        if (checkProcessRunning(recordingSoftwareProcesses[i])) {
-            return true; // Recording software detected
-        }
-    }
-
-    return false; // No recording software detected
-}
-
-function checkProcessRunning(processName) {
-    // Implement code to check if the given process is running
-    // This may require a backend server to interact with the user's device
-    // Due to browser security restrictions, JavaScript alone cannot directly check running processes
-    // You may need to use browser extensions or native applications for this functionality
-    // For example, you can create a browser extension that communicates with a native application to check running processes
-    // Alternatively, you can use server-side scripting languages like PHP to perform the check on the server side
-    // Here's a basic example using PHP:
-    // return <?php echo shell_exec("tasklist /FI \"IMAGENAME eq $processName\"") !== null; ?>;
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Check for recording software when the page loads
-    if (checkRecordingSoftware()) {
-        toggleScreenBlur(true); // Blur the screen if recording software is detected
-    }
-});
-
-function toggleScreenBlur(blur) {
-    var body = document.querySelector('body');
-    // Toggle the 'blur' class to blur/unblur the background
-    if (blur) {
-        body.classList.add('blur');
-    } else {
-        body.classList.remove('blur');
-    }
-}
-
-
- // Function to redirect to Discord when the user types "discord"
- <a id="discord-link" href="#" onclick="openDiscord()">Open Discord</a>
-
-
-    function openDiscord() {
-        var userAgent = navigator.userAgent.toLowerCase();
-        if (userAgent.indexOf('discord') !== -1) {
-            // If Discord app is installed, open it
-            window.location.href = "discord://";
-        } else {
-            // If Discord app is not installed, open Discord website
-            window.open("https://discord.com", "_blank");
-        }
-    }
-
-      // Event listener for F3 key
-      document.addEventListener('keydown', (e) => {
-            if (e.key === 'F3') {
-                document.getElementById('website-name').innerText = 'nicetry-loaded....owned.com';
-            }
-        });
-
-
-         // Event listener for when the window loses focus (indicating the user might have taken a screenshot)
-         window.onblur = function() {
-            // Open YouTube link when window loses focus
-            window.open('https://www.youtube.com/shorts/B__qNfRuOJI', '_blank');
-        };
-
-
-
-    </script>
+    <!-- Loading screen -->
+    <div id="loadingScreen" class="load" style="display: none;">
+        <div class="ichi 一">
+            <!-- Added img tag for the GIF -->
+            <img src="images/cock.gif" alt="Monkey" style="height: 128px; float: right; padding: 1em;">
+            <br><br>
+            <br><br>
+            <div class="anim-typewriter" style="padding-left: 1em; font-size: 1.3em;">
+                <p>[ <em class="green">OK</em> ]  Loading...</p>
+            </div>
+            <div class="anim2" style="padding-left: 1em; font-size: 1.3em;">
+                <p>[ <em class="red">FAILED</em> ]  Failed to load: FAILED...</p>
+            </div>
+        </div>
+        <div class="ni 二"></div>
+        <div class="san 三"></div>
+        <div class="shi 四">
+            <div class="window 四">
+                <div class="logo">
+                    <p class="mid">p00ron</p>
+                </div>
+                <div class="container">
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Auto-refresh meta tag -->
+    <meta http-equiv="refresh" content="5; URL=https://guns.lol/skip">
 </body>
+
 </html>

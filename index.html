@@ -35,34 +35,61 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 24px;
+            font-size: 32px;
             color: #fff;
-            z-index: 9999; /* Ensure it appears above other elements */
+            font-weight: 700;
+            z-index: 9999;
+            text-align: center;
+        }
+
+        /* Background blur */
+        .blur-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url(images/cock.gif) center center no-repeat;
+            background-size: cover;
+            filter: blur(10px);
+            z-index: 9998;
+        }
+
+        /* Animation for DOCTYPE line */
+        @keyframes dragDown {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .doctype-animation {
+            animation: dragDown 1.5s ease forwards;
         }
     </style>
 
-    <!-- JavaScript to show/hide text and loading screen -->
+    <!-- JavaScript to handle click event -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Show the text
-            document.getElementById('centeredText').style.display = 'block';
-            
-            // Show the loading screen
-            document.getElementById('loadingScreen').style.display = 'block';
-            
-            // Hide the text and loading screen after 5 seconds
-            setTimeout(function() {
-                document.getElementById('centeredText').style.display = 'none';
-                document.getElementById('loadingScreen').style.display = 'none';
-            }, 5000);
-        });
+        function startMusic() {
+            var audio = new Audio('yeat.mp3');
+            audio.play();
+        }
     </script>
 </head>
 
 <body>
+
+
+    <!-- Blurred background -->
+    <div class="blur-background"></div>
+
     <!-- Text in the center of the screen -->
     <div id="centeredText" class="centered-text">
-        a p i - b a c k e n d . i n f o . c o m
+        <div class="userPage_clickToEnterText__pAALW" style="font-weight:700;font-size:32px">click to enter...</div>
     </div>
 
     <!-- Loading screen -->
@@ -77,6 +104,10 @@
             </div>
             <div class="anim2" style="padding-left: 1em; font-size: 1.3em;">
                 <p>[ <em class="red">FAILED</em> ]  Failed to load: FAILED...</p>
+    <!-- DOCTYPE animation -->
+    <div class="doctype-animation">
+        Skided by me lol <3
+    </div>
             </div>
         </div>
         <div class="ni 二"></div>
@@ -94,8 +125,26 @@
             </div>
         </div>
     </div>
+
     <!-- Auto-refresh meta tag -->
-    <meta http-equiv="refresh" content="5; URL=https://guns.lol/skip">
+    <meta http-equiv="refresh" content="5; URL=">
+
+    <!-- JavaScript to handle click event -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show the text and blurred background
+            document.getElementById('centeredText').style.display = 'block';
+            document.querySelector('.blur-background').style.display = 'block';
+
+            // Add click event listener to hide text, blurred background, and start music
+            document.getElementById('centeredText').addEventListener('click', function() {
+                document.getElementById('centeredText').style.display = 'none';
+                document.querySelector('.blur-background').style.display = 'none';
+                document.getElementById('loadingScreen').style.display = 'block';
+                startMusic();
+            });
+        });
+    </script>
 </body>
 
 </html>

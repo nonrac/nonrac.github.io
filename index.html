@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Cache-control" content="public">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!-- Preload fonts -->
+    <link rel="preload" href="WOFF/FreeSerif-YO4a.woff" as="font" type="font/woff">
+    <link rel="preload" href="WOFF/jackeyfont.woff" as="font" type="font/woff">
+    <!-- Preload and link stylesheets -->
+    <link rel="preload" href="css/index.css" as="style">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="preload" href="css/crt.css" as="style">
+    <link rel="stylesheet" href="css/crt.css">
+    <link rel="preload" href="css/loading.css" as="style">
+    <link rel="stylesheet" href="css/loading.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.html" type="image/x-icon">
+
+    <!-- Page title and meta tags -->
+    <title>api-backend.info</title>
+    <meta name="theme-color" content="#000">
+    <meta property="og:title" content="api-backend.info">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="IDK WHUT TO PUT HERE">
+
+    <style>
+        /* Center text */
+        .centered-text {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            color: #fff;
+            z-index: 9999; /* Ensure it appears above other elements */
+        }
+    </style>
+
+    <!-- JavaScript to show/hide text and loading screen -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show the text
+            document.getElementById('centeredText').style.display = 'block';
+            
+            // Show the loading screen
+            document.getElementById('loadingScreen').style.display = 'block';
+            
+            // Hide the text and loading screen after 5 seconds
+            setTimeout(function() {
+                document.getElementById('centeredText').style.display = 'none';
+                document.getElementById('loadingScreen').style.display = 'none';
+            }, 5000);
+        });
+    </script>
+</head>
+
+<body>
+    <!-- Text in the center of the screen -->
+    <div id="centeredText" class="centered-text">
+        a p i - b a c k e n d . i n f o . c o m
+    </div>
+
+    <!-- Loading screen -->
+    <div id="loadingScreen" class="load" style="display: none;">
+        <div class="ichi 一">
+            <!-- Added img tag for the GIF -->
+            <img src="images/cock.gif" alt="Monkey" style="height: 128px; float: right; padding: 1em;">
+            <br><br>
+            <br><br>
+            <div class="anim-typewriter" style="padding-left: 1em; font-size: 1.3em;">
+                <p>[ <em class="green">OK</em> ]  Loading...</p>
+            </div>
+            <div class="anim2" style="padding-left: 1em; font-size: 1.3em;">
+                <p>[ <em class="red">FAILED</em> ]  Failed to load: FAILED...</p>
+            </div>
+        </div>
+        <div class="ni 二"></div>
+        <div class="san 三"></div>
+        <div class="shi 四">
+            <div class="window 四">
+                <div class="logo">
+                    <p class="mid">p00ron</p>
+                </div>
+                <div class="container">
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Auto-refresh meta tag -->
+    <meta http-equiv="refresh" content="5; URL=https://guns.lol/skip">
+</body>
+
+</html>

@@ -9,10 +9,10 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #000; /* Black background initially */
+            background-color: #000;
             background-size: cover;
             background-position: center;
-            color: white; /* Text color */
+            color: white;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -25,20 +25,20 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             text-align: center;
             color: black;
-            display: none; /* Hide the container initially */
+            display: none;
         }
         h1 {
-            color: red; /* Change color here */
+            color: red;
             margin-top: 0;
         }
         .info {
             font-size: 18px;
-            color: black; /* Change color here */
+            color: black;
         }
         #clickText {
             cursor: pointer;
             font-size: 24px;
-            color: black; /* Change color here */
+            color: black;
             text-decoration: underline;
         }
     </style>
@@ -56,13 +56,13 @@
 
     <script>
         function showInfo() {
-            var audio = new Audio('your_music_file.mp3'); // Change 'your_music_file.mp3' to the URL of your music file
+            var audio = new Audio('your_music_file.mp3');
             audio.play();
             document.body.style.background = 'url("https://cdn.discordapp.com/attachments/1222716761250468060/1224154308161962066/image.png?ex=661c758a&is=660a008a&hm=3dede0ecdabd21fe66ed379f732e577a17c06e6fd3c14fa7294afcb8c025a28f") no-repeat fixed center';
             document.body.style.backgroundSize = 'cover';
-            document.getElementById('infoContainer').style.display = 'block'; // Show the container with the information
-            document.getElementById('clickText').style.display = 'none'; // Hide the [click] text
-            window.open('html.php', '_blank'); // Open html.php in a new tab
+            document.getElementById('infoContainer').style.display = 'block';
+            document.getElementById('clickText').style.display = 'none';
+            window.open('https://discord.gg/64E2YheMEv', '_blank');
         }
     </script>
 </body>

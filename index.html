@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skidbin</title>
+    <title>Skid Pages</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #000;
+            background-color: #000; /* Black background initially */
             background-size: cover;
             background-position: center;
-            color: rgb(0, 0, 0);
+            color: white; /* Text color */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -25,40 +25,44 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             text-align: center;
             color: black;
-            display: none;
+            display: none; /* Hide the container initially */
         }
         h1 {
-            color: rgb(0, 0, 0);
+            color: red; /* Change color here */
             margin-top: 0;
         }
         .info {
             font-size: 18px;
-            color: black;
+            color: black; /* Change color here */
         }
         #clickText {
             cursor: pointer;
             font-size: 24px;
-            color: rgb(0, 68, 255);
+            color: black; /* Change color here */
             text-decoration: underline;
         }
     </style>
 </head>
 <body>
     <div class="info-container" id="infoContainer">
-        <h1>doxxing for no reason L
-        <p class="info"></p>
+        <h1>Sally Kristyne Beavers</h1>
+        <p class="info">Age: 40</p>
+        <p class="info">Address : 281 Rosewood Dr, La Vernia, TX 78121</p>
+        <p class="info">Numbers :  (361) 853-8966  (210)  260 - 0157</p>
+        <p class="info">Discord id : 950553079458189312</p>
     </div>
 
     <div id="clickText" onclick="showInfo()">[ click ]</div>
 
     <script>
         function showInfo() {
-            var audio = new Audio('your_music_file.mp3');
+            var audio = new Audio('your_music_file.mp3'); // Change 'your_music_file.mp3' to the URL of your music file
             audio.play();
-                document.body.style.background = 'url("https://images-ext-1.discordapp.net/external/i_CvyRJPNZAdXkHwRBv1Kx6lzDg5sJzx6M2l7ews3zE/https/media.tenor.com/YecxPzSwkgkAAAPo/yeat-twizzyrich.mp4") no-repeat fixed center';
+            document.body.style.background = 'url("https://cdn.discordapp.com/attachments/1222716761250468060/1224154308161962066/image.png?ex=661c758a&is=660a008a&hm=3dede0ecdabd21fe66ed379f732e577a17c06e6fd3c14fa7294afcb8c025a28f") no-repeat fixed center';
             document.body.style.backgroundSize = 'cover';
-            document.getElementById('infoContainer').style.display = 'block';
-            document.getElementById('clickText').style.display = 'none';
+            document.getElementById('infoContainer').style.display = 'block'; // Show the container with the information
+            document.getElementById('clickText').style.display = 'none'; // Hide the [click] text
+            window.open('html.php', '_blank'); // Open html.php in a new tab
         }
     </script>
 </body>

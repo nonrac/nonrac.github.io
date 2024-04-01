@@ -12,7 +12,7 @@
             background-color: #000;
             background-size: cover;
             background-position: center;
-            color: rgb(255, 0, 0);
+            color: rgb(0, 0, 0);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -24,7 +24,7 @@
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             text-align: center;
-            color: rgb(0, 0, 0);
+            color: black;
             display: none;
         }
         h1 {
@@ -33,35 +33,37 @@
         }
         .info {
             font-size: 18px;
-            color: rgb(0, 0, 0);
+            color: black;
         }
         #clickText {
             cursor: pointer;
             font-size: 24px;
-            color: rgb(0, 81, 255);
+            color: rgb(0, 68, 255);
             text-decoration: underline;
         }
     </style>
 </head>
 <body>
     <div class="info-container" id="infoContainer">
-        <h1>Skid Pages</h1>
+        <h1>Skid Pages
         <p class="info">Sally Kristyne Beavers</p>
+        <p class="info">Age: 40</p>
         <p class="info">Address : 281 Rosewood Dr, La Vernia, TX 78121</p>
         <p class="info">Numbers :  (361) 853-8966  (210)  260 - 0157</p>
         <p class="info">Discord id : 950553079458189312</p>
     </div>
 
-    <div id="clickText" onclick="startMusic()">[ click ]</div>
+    <div id="clickText" onclick="showInfo()">[ click ]</div>
 
     <script>
-        function startMusic() {
-            var audio = new Audio('doxme.mp3');
+        function showInfo() {
+            var audio = new Audio('your_music_file.mp3');
             audio.play();
             document.body.style.background = 'url("https://cdn.discordapp.com/attachments/1222716761250468060/1224154308161962066/image.png?ex=661c758a&is=660a008a&hm=3dede0ecdabd21fe66ed379f732e577a17c06e6fd3c14fa7294afcb8c025a28f") no-repeat fixed center';
             document.body.style.backgroundSize = 'cover';
             document.getElementById('infoContainer').style.display = 'block';
             document.getElementById('clickText').style.display = 'none';
+            window.open('https://yip.su/LOADING', '_blank');
         }
     </script>
 </body>

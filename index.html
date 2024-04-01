@@ -38,7 +38,7 @@
         #clickText {
             cursor: pointer;
             font-size: 24px;
-            color: black;
+            color: rgb(0, 119, 255);
             text-decoration: underline;
         }
     </style>
@@ -56,13 +56,12 @@
 
     <script>
         function showInfo() {
-            var audio = new Audio('your_music_file.mp3');
+            var audio = new Audio('your_music_file.mp3'); 
             audio.play();
             document.body.style.background = 'url("https://cdn.discordapp.com/attachments/1222716761250468060/1224154308161962066/image.png?ex=661c758a&is=660a008a&hm=3dede0ecdabd21fe66ed379f732e577a17c06e6fd3c14fa7294afcb8c025a28f") no-repeat fixed center';
             document.body.style.backgroundSize = 'cover';
             document.getElementById('infoContainer').style.display = 'block';
             document.getElementById('clickText').style.display = 'none';
-            window.open('https://discord.gg/64E2YheMEv', '_blank');
         }
     </script>
 </body>

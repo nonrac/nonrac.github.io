@@ -7,42 +7,7 @@
     <meta property="og:title" content="Skidbin">
     <meta property="og:description" content="https://discord.gg/THtweDTp9v">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #000;
-            background-size: cover;
-            background-position: center;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .info-container {
-            background-color: rgba(255, 255, 255, 0.6);
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            color: black;
-            display: none;
-        }
-        h1 {
-            color: rgb(0, 0, 0);
-            margin-top: 0;
-        }
-        .info {
-            font-size: 18px;
-            color: black;
-        }
-        #clickText {
-            cursor: pointer;
-            font-size: 24px;
-            color: rgb(0, 119, 255);
-            text-decoration: underline;
-        }
+        body{font-family:Arial,sans-serif;margin:0;padding:0;background-color:#000;background-size:cover;background-position:center;color:white;display:flex;justify-content:center;align-items:center;height:100vh}.info-container{background-color:rgba(255,255,255,.6);padding:20px;border-radius:5px;box-shadow:0 2px 5px rgba(0,0,0,.1);text-align:center;color:black;display:none}.info{font-size:18px;color:black}#clickText{cursor:pointer;font-size:24px;color:#0077ff;text-decoration:underline}
     </style>
 </head>
 <body>
@@ -54,8 +19,8 @@
 
     <script>
         function showInfo() {
-            var audio = new Audio('icey.mp3'); 
-            audio.play();
+            var a = new Audio('icey.mp3');
+            a.play();
             document.body.style.background = 'url("https://tenor.com/view/case-oh-elbow-drop-sped-up-gif-3857149809924349837") no-repeat fixed center';
             document.body.style.backgroundSize = 'cover';
             document.getElementById('infoContainer').style.display = 'block';

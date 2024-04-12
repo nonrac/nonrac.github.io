@@ -9,9 +9,15 @@
             font-family: Arial, sans-serif;
             text-align: center;
             margin-top: 100px;
+            background-color: #f3f3f3;
         }
         #countdown {
-            font-size: 24px;
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .emoji {
+            font-size: 48px;
         }
     </style>
 </head>
@@ -39,7 +45,7 @@
 
             // Display the countdown
             document.getElementById("countdown").innerHTML = days + " days till Mexico ";
-            document.getElementById("countdown").innerHTML += "✈️";
+            document.getElementById("countdown").innerHTML += "<span class='emoji'>✈️</span>";
         }, 1000);
     </script>
 </body>

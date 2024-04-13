@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+    <style>
+        body {
+            background-color: #000; /* Set background color to black */
+            color: #fff; /* Set text color to white */
+            font-family: Arial, sans-serif; /* Set font family */
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .box {
+            background-color: #000; /* Set background color to black */
+            color: #fff; /* Set text color to white */
+            border-radius: 10px; /* Set border radius */
+            padding: 20px; /* Set padding */
+            text-align: center; /* Center align text */
+            transition: transform 0.3s; /* Add transition effect */
+        }
+
+        .box:hover {
+            transform: scale(1.05); /* Scale up when hovered over */
+        }
+
+        .profile-picture {
+            width: 150px; /* Set width */
+            height: 150px; /* Set height */
+            border-radius: 50%; /* Make it circular */
+            margin-bottom: 20px; /* Add margin at the bottom */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="box">
+        <img src="thestoryendshere.jpg" alt="Profile Picture" class="profile-picture">
+        <div><strong>Owner:</strong> thestoryendshere</div>
+    </div>
+    <div class="box" style="margin-left: 20px;"> <!-- Adjust margin as needed -->
+        <img src="user.png" alt="Profile Picture" class="profile-picture">
+        <div style="transition: transform 0.3s;"><strong>Main Owner:</strong> username2378</div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hall of Autism</title>
+    <title>HALL OF SKIDS</title>
     <style>
         body {
-            background-color: #000;
-            color: #ff0000;
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #000;
         }
+
         .navbar {
             display: flex;
             justify-content: center; 
@@ -20,6 +20,9 @@
             background-color: rgba(0, 0, 0, 0.8); /* Adjust the transparency here */
             border-radius: 0;
             overflow: hidden;
+            position: fixed; /* Fixed position to keep it at the top */
+            width: 100%; /* Full width */
+            top: 0; /* Position at the top */
         }
 
         .navbar ul {
@@ -49,49 +52,94 @@
             background-color: #fff; /* Change background color on hover */
             color: #000; /* Change text color to black on hover */
         }
-        .footer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            background-color: #ffffff;
+
+        h1 {
             text-align: center;
-            padding: 10px 0;
-            font-size: 18px;
-            font-weight: bold;
+            margin-top: 50px; /* Adjusted margin to position under the navbar */
+            font-size: 36px;
+            color: transparent;
+            background-image: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
+            -webkit-background-clip: text; /* For Safari and older versions of Chrome */
+            background-clip: text; /* Standard version */
         }
-        .content {
+
+        .container {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
-            align-items: flex-start; /* Align items at the top */
-            min-height: 100vh; /* Ensure content stretches to at least the height of the viewport */
-            text-align: center;
-            padding-top: 20px; /* Add top padding to space out from the top */
+            padding: 20px;
+            margin-top: 200px; /* Adjusted margin to position the skid boxes below the text */
         }
-        p {
-            color: #ff0000;
-            margin: 0; /* Remove default margin */
+
+        .skid-box {
+            width: 200px;
+            margin: 10px;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .skid-box img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .skid-name {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .skid-description {
+            margin-top: 5px;
+            color: #fff;
+        }
+
+        .skid-link {
+            color: blue;
+            text-decoration: underline;
+            cursor: pointer;
         }
     </style>
 </head>
-<body>
+<body onload="playMusic()">
+    <div class="navbar">
+        <ul>
+            <li><a href="https://koltenbeavers.online">Home</a></li>
+            <li><a href="https://koltenbeavers.online/hoa.html">Hall of Autism</a></li>
+            <li><a href="https://koltenbeavers.online/tos.html">TOS</a></li>
+            <li><a href="https://koltenbeavers.online/users.html">Users</a></li>
+            <li><a href="https://koltenbeavers.online/paste.html">Pastes</a></li>
+            <li><a href="https://koltenbeavers.online/updates.html">Updates</a></li>
+            <li><a target="_blank" rel="nofollow" href="https://t.me/grabbingherwaist">Telegram</a></li>
+        </ul>
+    </div>
+    
+    <h1>HALL OF SKIDS</h1>
+    <div class="container">
+        <div class="skid-box">
+            <img src="dad.png" alt="Skid 1">
+            <div class="skid-name">Koltens Dad</div>
+            <div class="skid-description">Works for the feds. Check out his home on <span class="skid-link" onclick="openLink('https://www.zillow.com/homedetails/281-Rosewood-Dr-La-Vernia-TX-78121/244531860_zpid/')">Zillow</span>.</div>
+        </div>
+        <div class="skid-box">
+            <img src="skid2.jpg" alt="Skid 2">
+            <div class="skid-name">Skid 2</div>
+            <div class="skid-description">Description for Skid 2. <span class="skid-link" onclick="openLink('https://www.example.com')">Example Link</span></div>
+        </div>
+        <!-- Add more skid boxes as needed -->
+    </div>
 
-<div class="navbar">
-    <ul>
-        <li><a href="https://koltenbeavers.online">Home</a></li>
-        <li><a href="https://koltenbeavers.online/hoa.html">Hall of Autism</a></li>
-        <li><a href="https://koltenbeavers.online/tos.html">TOS</a></li>
-        <li><a href="https://koltenbeavers.online/users.html">Users</a></li>
-        <li><a href="https://koltenbeavers.online/paste.html">Pastes</a></li>
-        <li><a target="_blank" rel="nofollow" href="https://t.me/grabbingherwaist">Telegram</a></li>
-    </ul>
-</div>
+    <script>
+        function playMusic() {
+            var audio = new Audio('beat.mp3');
+            audio.play();
+        }
 
-<!-- Content -->
-<div class="content">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/gx8hniEeJAo" frameborder="0" allowfullscreen></iframe>
-</div>
-
-<!-- MADE BY thestoryendshere -->
-
+        function openLink(url) {
+            window.open(url, "_blank");
+        }
+    </script>
 </body>
 </html>

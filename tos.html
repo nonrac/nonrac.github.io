@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        ol {
+            list-style-type: decimal;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .description {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            margin-left: 20px;
+            margin-bottom: 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease-out;
+        }
+
+        .description.show {
+            max-height: 100px;
+            opacity: 1;
+        }
+
+        .drop-down {
+            display: none;
+            margin-left: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease-out, margin-top 0.3s ease-out;
+            position: absolute;
+            top: 20px;
+            left: 0;
+            background-color: #333;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .drop-down.show {
+            display: block;
+            opacity: 1;
+            margin-top: 10px;
+        }
+
+        .drop-down a {
+            color: #00f; /* Blue color */
+            text-decoration: none;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Terms of Service</h1>
+        <ol>
+            <li onclick="toggleDescription(1)">NO DDOSING
+                <div class="description">
+                    <p>Denial-of-Service (DoS) attacks are prohibited.</p>
+                </div>
+            </li>
+            <li onclick="toggleDescription(2)">WHEN PASTING SOMEONE ENSURE THAT THEY ARE OVER THE AGE OF 15+
+                <div class="description">
+                    <p>Before sharing personal information or content about someone else, ensure they are over the age of 15.</p>
+                </div>
+            </li>
+            <li onclick="toggleDescription(3)">NO NSFW
+                <div class="description">
+                    <p>Content that is Not Safe For Work (NSFW) is not allowed.</p>
+                </div>
+            </li>
+            <li onclick="toggleDescription(4)">NO REUPLOADS
+                <div class="description">
+                    <p>Do not reupload content that does not belong to you without proper permission.</p>
+                </div>
+            </li>
+            <li onclick="toggleDescription(5)">DON'T BEG FOR MOD
+                <div class="description">
+                    <p>Begging for moderator privileges is not allowed.</p>
+                </div>
+            </li>
+            <li onclick="toggleDescription(6)">DON'T BE AN OVERALL FAGGOT
+                <div class="description">
+                    <p>Acting in a disruptive or disrespectful manner will not be tolerated.</p>
+                </div>
+            </li>
+            <li onclick="toggleDrop()">REPORT ALL TOS BREAKS ON THIS TELE
+                <div class="drop-down">
+                    <a href="https://t.me/grabbingherwaist" target="_blank">https://t.me/grabbingherwaist</a>
+                </div>
+            </li>
+        </ol>
+    </div>
+
+    <audio id="bgAudio" autoplay>
+        <source src="devx.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        function toggleDescription(id) {
+            var descriptions = document.querySelectorAll('.description');
+            descriptions.forEach(function(description) {
+                description.classList.remove('show');
+            });
+            var selectedDescription = document.querySelector('.description:nth-child(' + id + ')');
+            selectedDescription.classList.toggle('show');
+        }
+
+        function toggleDrop() {
+            var dropDown = document.querySelector('.drop-down');
+            dropDown.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>

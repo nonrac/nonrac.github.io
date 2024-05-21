@@ -8,12 +8,17 @@
   <style>
     /* Styles for the navbar */
     .navbar {
-      background-color: #f0f0f0; /* Light gray background */
+      position: fixed; /* Fix to top of screen */
+      top: 0;
+      left: 0; /* Start at top left */
+      width: 100vw; /* Span entire viewport width */
+      height: 80px; /* Set navbar height */
+      background-color: #212529; /* Dark gray background */
       display: flex;
       justify-content: space-between; /* Evenly distribute links */
       align-items: center; /* Vertically center content */
-      padding: 1rem 2rem; /* Add some padding */
-      border-bottom: 1px solid #ddd; /* Subtle border to separate */
+      padding: 0 2rem; /* Add some padding */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
     }
 
     .navbar ul {
@@ -24,21 +29,19 @@
 
     .navbar li {
       display: inline-block; /* Links side-by-side */
-      margin-right: 1rem; /* Add spacing between links */
     }
 
-    .navbar li:last-child {
-      margin-right: 0; /* Remove margin from last link */
-    }
-
-    .navbar a {
+    .navbar li a {
       text-decoration: none; /* Remove underline from links */
-      color: #333; /* Dark gray text color */
-      font-weight: bold; /* Bold links for better emphasis */
+      color: #fff; /* White text color */
+      font-weight: bold; /* Bold links for emphasis */
+      font-size: 1.2rem; /* Slightly larger font size */
+      padding: 1rem 2rem; /* More padding for spacious feel */
+      transition: background-color 0.2s ease-in-out; /* Smooth hover effect */
     }
 
-    .navbar a:hover {
-      color: #007bff; /* Blue hover effect for links */
+    .navbar li a:hover {
+      background-color: #1a1a1a; /* Darken background on hover */
     }
   </style>
 </div>

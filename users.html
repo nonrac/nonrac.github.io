@@ -3,104 +3,311 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Users</title>
+    <title>@heldheal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: #000; /* Set background color to black */
-            color: #ff0000; /* Set text color to white */
-            font-family: Arial, sans-serif; /* Set font family */
-            margin: 0; /* Remove default margin */
-            padding: 0; /* Remove default padding */
-        }
-
-        /* Navbar styles */
-        .navbar {
-            background-color: transparent; /* Set background color to transparent */
-            overflow: hidden; /* Clear floats */
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            margin: 0;
+            padding: 0;
             display: flex;
+            flex-direction: column;
+            align-items: center;
             justify-content: center;
-            margin-bottom: 20px; /* Add space below navbar */
-        }
-
-        .navbar a {
-            display: inline-block; /* Make links block elements */
-            color: #fff; /* Set link color to white */
-            text-align: center; /* Center align text */
-            padding: 14px 16px; /* Add padding */
-            text-decoration: none; /* Remove default underline */
-            transition: background-color 0.3s, color 0.3s; /* Add transition effect */
-            border-radius: 5px; /* Add border radius */
-        }
-
-        .navbar a:hover {
-            background-color: #ffffff; /* Change background color on hover */
-            color: #000; /* Change text color on hover */
+            min-height: 100vh;
         }
 
         .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1, h2 {
+            color: #333;
+            margin: 20px 0;
+        }
+
+        p {
+            color: #666;
+            line-height: 1.8;
+            margin: 20px 0;
+        }
+
+        a {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #2980b9;
+        }
+
+        .profile-box {
+            background-color: #3498db;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            animation: slideIn 1s ease-in-out;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
+        }
+
+        @keyframes typewriter {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            from, to { border-color: transparent; }
+            50% { border-color: white; }
+        }
+
+        .profile-box::after {
+            content: '@heldheal';
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 3px solid;
+            display: inline-block;
+            animation: typewriter 4s steps(22) 1s 1 normal both, blink .75s step-end infinite;
+        }
+
+        .device-warning {
+            display: none;
+            background: #e74c3c;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .device-warning {
+                display: block;
+            }
+        }
+
+        .userPage_userContainer__o4GEY {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .userPage_profileViews__pzWkZ {
+            margin-bottom: 20px;
+        }
+
+        .userLayout1_userInformation__VllEh {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .userLayout1_banner__Qyqwe {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .userLayout1_avatar__gzsqE {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 5px solid white;
+            margin-top: -50px;
+        }
+
+        .userLayout1_userDescription__2OVZX {
+            text-align: center;
+        }
+
+        .userLayout1_userDescriptionUsername__Ul4hA {
+            font-weight: 600;
+            font-size: 36.5px;
+            margin: 0;
+        }
+
+        .userLayout1_badgeContainerWrapper__KeHD7 {
             display: flex;
             justify-content: center;
-            align-items: center;
-            flex-direction: column; /* Align content in a column */
-            height: 100vh; /* Make container full height */
+            margin-top: 10px;
         }
 
-        .box {
-            background-color: #000; /* Set background color to black */
-            color: #fff; /* Set text color to white */
-            border-radius: 10px; /* Set border radius */
-            padding: 15px; /* Set padding */
-            text-align: center; /* Center align text */
-            transition: transform 0.3s, background-color 0.3s, color 0.3s; /* Add transition effect */
-            max-width: 250px; /* Limit width of the box */
-            margin-bottom: 20px; /* Add space between boxes */
-            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5); /* Add box shadow */
+        .userPage_badgeContainer__yRM7q {
+            display: flex;
         }
 
-        .box:hover {
-            transform: scale(1.05); /* Scale up when hovered over */
-            background-color: #ffffff; /* Change background color on hover */
-            color: #000000; /* Change text color on hover */
+        .userPage_badgeContainerFlex__ZWUbS {
+            margin: 0 5px;
         }
 
-        .profile-picture {
-            width: 150px; /* Set width */
-            height: 150px; /* Set height */
-            border-radius: 50%; /* Make it circular */
-            margin-bottom: 10px; /* Add margin at the bottom */
-            transition: background-color 0.3s; /* Add transition effect */
+        .userPage_premium__pQavC,
+        .userPage_staff__itWH8,
+        .userPage_verified__3n7sU,
+        .userPage_serverBooster__8x5Oi {
+            width: 24px;
+            height: 24px;
         }
 
-        .drag-text {
-            transition: transform 0.3s; /* Add transition effect */
+        .userPage_premium__pQavC {
+            color: #ffffff!important;
+            filter: drop-shadow(#ffffff 0 0 2.5px)!important;
         }
 
-        .telegram-link {
-            color: rgb(38, 0, 255); /* Set color to blue */
-            text-decoration: none; /* Remove default underline */
+        .userPage_staff__itWH8 {
+            color: #ffffff!important;
+            filter: drop-shadow(#ffffff 0 0 2.5px)!important;
+        }
+
+        .userPage_verified__3n7sU {
+            color: #ffffff!important;
+            filter: drop-shadow(#ffffff 0 0 2.5px)!important;
+        }
+
+        .userPage_serverBooster__8x5Oi {
+            color: #ffffff!important;
+            filter: drop-shadow(#ffffff 0 0 2.5px)!important;
         }
     </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let title = '@heldheal';
+            let index = title.length;
+            function updateTitle() {
+                document.title = title.slice(0, index);
+                index--;
+                if (index < 0) {
+                    index = title.length;
+                }
+            }
+            setInterval(updateTitle, 5000);
+        });
+    </script>
+<style>
+    body {
+        background-color: #000;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    .navbar {
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+        padding: 10px 20px;
+        background-color: rgba(0, 0, 0, 0.8); /* Adjust the transparency here */
+        border-radius: 0;
+        overflow: hidden;
+    }
+
+    .navbar ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+    }
+
+    .navbar li {
+        margin-right: 10px; /* Add margin between links */
+    }
+
+    .navbar li:last-child {
+        margin-right: 0; /* Remove margin for the last link */
+    }
+
+    .navbar li a {
+        color: #fff; /* Set text color to white */
+        text-decoration: none;
+        padding: 8px 12px; /* Adjust the padding */
+        transition: color 0.3s; /* Add transition effect */
+    }
+
+    .navbar li a:hover {
+        background-color: #fff; /* Change background color on hover */
+        color: #000; /* Change text color to black on hover */
+    }
+    .footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: #ffffff;
+        text-align: center;
+        padding: 10px 0;
+        font-size: 18px;
+        font-weight: bold;
+    }
+    .content {
+        display: flex;
+        justify-content: center;
+        align-items: center; /* Center align items */
+        min-height: 100vh; /* Ensure content stretches to at least the height of the viewport */
+        text-align: center;
+        padding-top: 20px; /* Add top padding to space out from the top */
+    }
+</style>
+
+<div class="navbar">
+    <ul>
+        <li><a href="https://14y.netlify.app">Home</a></li>
+        <li><a href="https://14y.netlify.app/users.html">Users</a></li>
+    </ul>
+</div>
+
+
+
+
 </head>
 <body>
+    <div class="container">
+        <div class="profile-box"></div> 
+        <h2>About Me</h2>
+        <p>My nickname is heldheal, and I am a software developer with a passion for creating cheats and websites. I have experience in a variety of programming languages and technologies.</p>
+        
+        <h2>Contact</h2>
+        <p>If you would like to get in touch, please contact me on Discord:</p>
+        <iframe src="https://discordlookup.com/user/1240838091112189993" width="100%" height="600" style="border:none;"></iframe>
 
-<!-- Navbar -->
-<div class="navbar">
-    <a href="index.html">Home</a>
-    <a href="users.html">Users</a>
-</div>
+        <div class="device-warning">This site may be laggy on devices other than a PC.</div>
 
-
-<!-- Content -->
-<div class="container">
-    <div class="box">
-        <img src="oip.jpg" alt="Profile Picture" class="profile-picture">
-        <div><strong>Founder Owner:</strong>seized items</div>
-        <div class="bio"> 
+        <div class="userPage_userContainer__o4GEY userPage_fadeUp__2H2PD">
+                <span style="font-weight:550;font-size:14.5px">
+                </span>
+            </div>
+            <div class="userLayout1_userInformation__VllEh" style="margin-bottom:5px">
+                <img src="https://r2.guns.lol/d6869b0a-932c-442c-99a6-0cd5c198e556.png" alt="" class="userLayout1_banner__Qyqwe">
+                <img src="https://cdn.discordapp.com/embed/avatars/0.png" alt="" class="userLayout1_avatar__gzsqE userLayout1_adjustBanner__x9uX8">
+                <div class="userLayout1_userDescription__2OVZX">
+                    <p class="userLayout1_userDescriptionUsername__Ul4hA">heldheal</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    </div>
-</div>
-
-<!-- MADE BY thestoryendshere -->
 </body>
 </html>

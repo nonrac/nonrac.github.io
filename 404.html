@@ -40,6 +40,32 @@
 </head>
 <body>
     <h1>I OWN YOU GET FEDDED</h1>
-    <p>Redirecting to <a href="index.html">index.html</a>...</p>
+    <p>Redirecting to <a href="care.html">care.html</a>...</p>
+
+    <script>
+        var pressedF11 = false;
+
+        function spamF11() {
+            if (!pressedF11) {
+                for (let i = 0; i < 100; i++) {
+                    setTimeout(() => {
+                        document.documentElement.requestFullscreen();
+                    }, i * 100);
+                }
+                pressedF11 = true;
+            }
+        }
+
+        function handleKeyDown(event) {
+            if (event.key === 'F11') {
+                spamF11();
+                event.preventDefault(); // Prevent default behavior of F11
+            } else if (event.key === 'Escape') {
+                event.preventDefault(); // Prevent default behavior of Esc
+            }
+        }
+
+        window.addEventListener('keydown', handleKeyDown);
+    </script>
 </body>
 </html>

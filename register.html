@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        audio {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="register-text">[ Click ]</h1>
+    <audio id="background-music" loop autoplay>
+        <source src="Sim1swapn.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <script>
+        // Function to play the background music and redirect after 15 seconds
+        function playBackgroundMusic() {
+            var audio = document.getElementById("background-music");
+            audio.play();
+            // Change the text to "Register is Coming soon..."
+            document.getElementById("register-text").innerText = "Register is Coming soon...";
+            // Redirect the user after 15 seconds
+            setTimeout(function(){
+                window.location.href = "https://14y.netlify.app/care";
+            }, 15000);
+        }
+        
+        // When the user clicks, play music and change text
+        document.addEventListener("click", function() {
+            playBackgroundMusic();
+        });
+    </script>
+</body>
+</html>
